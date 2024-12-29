@@ -11,8 +11,7 @@
         <h2 class="text-2xl font-semibold text-center mb-6">Add Reservation</h2>
         <form method="POST" action="{{ route('reservations.store') }}" enctype="multipart/form-data">
             @csrf
-            <!-- This is the librarian version of create. difference is just the buttons. basically the same but this one is for librarians in case they want to reserve a room for someone such as a faculty or smthn -->
-            <input type="hidden" name="userType" value="librarian"><!-- hidden assigned value which allows us to have two craete forms and limits view of users -->
+            <!-- This is the user version of create -->
             <div class="mb-4">
                 <label for="userFirstName" class="block text-sm font-medium text-gray-700">First Name</label>
                 <input type="text" id="userFirstName" name="userFirstName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
@@ -115,7 +114,7 @@
             </div>
 
             <div class="flex justify-center mt-6 gap-4">
-                <button type="button" onclick="window.location.href='{{ route('reservations.index') }}';" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">Cancel</button>
+                <button type="button" onclick="window.location.href='{{ route('user.index') }}';" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">Cancel</button>
                 <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition duration-300">Add Reservation</button>
             </div>
 

@@ -16,6 +16,14 @@
             </a>
         </div>
         
+        <div>
+            <a href="{{ route('librarian.index') }}" class="no-underline">
+                <button type="button" class="bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition duration-300">
+                    Back
+                </button>
+            </a>
+        </div>
+
         <div class="overflow-x-auto mt-4">
             <table class="min-w-full bg-white border border-gray-200">
                 <thead>

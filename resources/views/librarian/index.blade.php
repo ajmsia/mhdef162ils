@@ -7,21 +7,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-6">      
-<main class="container mx-auto px-6 py-12 text-center">
-    <h2 class="text-4xl font-bold mb-8">Librarian Dashboard</h2>
-
-    <div class="mb-12">
-        <p class="text-lg mb-6">Choose an option below:</p>
-        <div class="space-y-6">
-            <!-- View Rooms Button (Top-Left) -->
-            <a href="{{ route('rooms.index') }}">
-                <button class="absolute top-6 left-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
-                    View Rooms
-                </button>
-            </a>
-
-            <!-- Main Content Container -->
-            <div class="flex flex-wrap justify-center gap-6 mt-24">
+    <div class="flex space-x-4 mt-6">
+        <!-- Rooms Button -->
+        <a href="{{ route('rooms.index') }}">
+            <button class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
+                Rooms
+            </button>
+        </a>
 
                 <!-- Reservations Button -->
                 <a href="{{ route('reservations.index') }}">

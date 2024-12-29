@@ -45,7 +45,7 @@
                             <tr class="border-b border-slate-100">
                                 <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Room</th>
                                 <td class="px-6 py-4 text-slate-600">
-                                    @foreach($rooms as $room)
+                                    @foreach($rooms as $room) <!-- Allows us to get room data from another table and display name here -->
                                         @if($room->id == $reservation->roomID)
                                             {{ $room->roomName }}
                                         @endif

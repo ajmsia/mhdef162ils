@@ -27,7 +27,7 @@
                         </td>
                         <td class="py-3 px-6">{{ $room->roomCapacity }}</td>
                         <td class="py-3 px-6">
-                            @if($room->image)
+                            @if($room->image) <!-- displays image of the room -->
                                 <div class="mb-4">
                                     <img src="{{ asset('storage/' . $room->image) }}" alt="Room Image" class="w-full max-w-sm rounded-lg shadow-md">
                                 </div>
