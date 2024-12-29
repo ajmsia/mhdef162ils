@@ -9,21 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->softdeletes();
-            $table->('');
+        Schema::table('rooms', function (Blueprint $table) {
+            $table->string('image')->nullable();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::table('rooms', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -9,14 +9,14 @@
 <body class="bg-gray-100 p-6">
     <div class="container mx-auto">
         <div>
-        <a href="{{ route('rooms.create') }}" class="no-underline">
-            <button type="button" class="bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition duration-300">
-                Add Room
-            </button>
-        </a>
+            <a href="{{ route('rooms.create') }}" class="no-underline">
+                <button type="button" class="bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition duration-300">
+                    Add Room
+                </button>
+            </a>
         </div>
         
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto mt-4">
             <table class="min-w-full bg-white border border-gray-200">
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
@@ -28,10 +28,13 @@
                 <tbody id="roomTable">
                     @foreach($rooms as $room)
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6">{{ $room->roomName }}</td>
+                        <td class="py-3 px-6">
+                            <a href="{{ route('rooms.show', ['room' => $room->id]) }}">
+                                {{ $room->roomName }}
+                            </a>
+                        </td>
                         <td class="py-3 px-6">{{ $room->roomCapacity }}</td>
                         <td class="py-3 px-6">
-                            <!-- Add any action buttons/links here -->
                             <a href="{{ route('rooms.edit', $room->id) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
                                 Edit
                             </a>
@@ -51,4 +54,3 @@
     </div>
 </body>
 </html>
-

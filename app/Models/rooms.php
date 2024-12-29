@@ -9,7 +9,20 @@ class rooms extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = 
-        ['roomName', 'roomCapacity'];
+    protected $fillable = ['roomName', 'roomCapacity', 'image'];
 
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'roomid', 'id');
+    }
+
+    public function isAvailable($date, $time)
+    {
+        return !$this->reservations()
+            ->where('reserveDate', $date)
+            ->where('reserveTime', $time)
+            ->exists();
+    }
+        
 }
