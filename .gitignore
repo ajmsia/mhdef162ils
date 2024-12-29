@@ -1,23 +1,57 @@
-/.phpunit.cache
+# Ignore PHPUnit cache
+.phpunit.cache
+
+# Ignore node modules
 /node_modules
+
+# Ignore public build and hot files
 /public/build
 /public/hot
+
+# Ignore public storage directory
 /public/storage
+
+# Ignore specific storage files
 /storage/*.key
 /storage/pail
-/vendor
+
+# Ignore vendor directory (for composer dependencies)
+vendor/
+
+# Ignore environment configuration files
 .env
 .env.backup
 .env.production
+
+# Ignore Phpactor configuration
 .phpactor.json
+
+# Ignore PHPUnit result cache
 .phpunit.result.cache
+
+# Ignore Homestead configuration
 Homestead.json
 Homestead.yaml
+
+# Ignore authentication files
 auth.json
+
+# Ignore npm and yarn debug logs
 npm-debug.log
 yarn-error.log
+
+# Ignore fleet directory
 /.fleet
+
+# Ignore idea-related files (JetBrains IDEs)
 /.idea
+
+# Ignore Nova files (Laravel Nova)
 /.nova
+
+# Ignore VS Code configuration
 /.vscode
+
+# Ignore Zed-related files
 /.zed
+
