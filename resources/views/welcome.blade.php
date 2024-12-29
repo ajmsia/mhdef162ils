@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SLIS ILS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Function to redirect to the appropriate dashboard
+        function redirectToDashboard(role) {
+            if (role === 'patron') {
+                window.location.href = "{{ route('user.index') }}";  // Redirect to Patron dashboard
+            } else if (role === 'librarian') {
+                window.location.href = "{{ route('librarian.index') }}";  // Redirect to Librarian dashboard
+            }
+        }
+    </script>
 </head>
 <body class="bg-gray-100 font-sans">
 
@@ -20,23 +30,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="hidden sm:flex sm:items-center sm:ms-6">
-                    <!-- Authentication Links -->
-                    @if (Auth::check())
-                        <div class="flex items-center">
-                            <span class="text-white">{{ Auth::user()->name }}</span>
-                            <form method="POST" action="{{ route('logout') }}" x-data>
-                                @csrf
-                                <button type="submit" class="text-white ml-4">Log Out</button>
-                            </form>
-                        </div>
-                    @else
-                        <div class="flex space-x-4">
-                            <a href="{{ route('login') }}" class="text-white">Login</a>
-                            <a href="{{ route('register') }}" class="text-white">Register</a>
-                        </div>
-                    @endif
-                </div>
             </div>
         </div>
     </nav>
@@ -48,8 +41,9 @@
         <div class="mb-12">
             <p class="text-lg mb-6">Get Started</p>
             <div class="space-y-6">
-                <button class="bg-black text-white py-4 px-10 rounded-md w-64 hover:bg-gray-800 transition-all duration-300 text-lg">Patron</button>
-                <button class="bg-black text-white py-4 px-10 rounded-md w-64 hover:bg-gray-800 transition-all duration-300 text-lg">Librarian</button>
+                <!-- Patron and Librarian Buttons -->
+                <button onclick="redirectToDashboard('patron')" class="bg-black text-white py-4 px-10 rounded-md w-64 hover:bg-gray-800 transition-all duration-300 text-lg">Patron</button>
+                <button onclick="redirectToDashboard('librarian')" class="bg-black text-white py-4 px-10 rounded-md w-64 hover:bg-gray-800 transition-all duration-300 text-lg">Librarian</button>
             </div>
         </div>
 
@@ -65,3 +59,4 @@
 
 </body>
 </html>
+
