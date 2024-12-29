@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100 p-6">
     <div class="container mx-auto">
-        @if(session('success'))
+        @if(session('success')) <!-- For the message if you successfully applied for reservation -->
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
                 <span class="block sm:inline">{{ session('success') }}</span>
             </div>
@@ -21,7 +21,13 @@
                 </button>
             </a>
         </div>
-        
+        <div>
+            <a href="{{ route('librarian.index') }}" class="no-underline">
+                <button type="button" class="bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition duration-300">
+                    Back
+                </button>
+            </a>
+        </div>
         <div class="overflow-x-auto">
             <table class="min-w-full bg-white border border-gray-200">
                 <thead>

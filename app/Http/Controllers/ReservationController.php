@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $reservations = Reservations::with('rooms')->get();
@@ -26,19 +23,18 @@ class ReservationController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $rooms = Rooms::all(); 
         return view('reservations.create', compact('rooms'));
     }
 
+    public function usercreate()
+    {
+        $rooms = Rooms::all(); 
+        return view('reservations.usercreate', compact('rooms'));
+    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $reservationData = $request->validate([
@@ -55,11 +51,15 @@ class ReservationController extends Controller
         ]);
         
         Reservations::create($reservationData);
-        return redirect()->route('reservations.index')->with('success', 'Reservation added successfully.');
+
+        if ($reservationData['userType'] == 'librarian') {
+            return redirect()->route('reservations.index')->with('success', 'Reservation added successfully.');
+        } else {
+            return redirect()->route('user.index')->with('success', 'Reservation added successfully.');
+        }
+        
     }
-    /**
-     * Display the specified resource.
-     */
+ 
     public function show(reservations $reservations, $id) 
     {
         $reservation = Reservations::find($id);
@@ -91,10 +91,6 @@ class ReservationController extends Controller
         return redirect()->route('reservations.index')->with('error', 'No status provided!');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $reservations = Reservations::findOrFail($id);

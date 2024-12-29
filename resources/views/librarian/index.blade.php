@@ -6,7 +6,8 @@
     <title>Librarian Index</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 p-6">      
+<body class="bg-gray-100 p-6">    
+    <h1 class="text-4xl font-bold">Librarian Index</h1>  
     <div class="flex space-x-4 mt-6">
         <!-- Rooms Button -->
         <a href="{{ route('rooms.index') }}">
