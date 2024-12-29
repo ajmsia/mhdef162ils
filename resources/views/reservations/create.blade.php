@@ -9,7 +9,7 @@
 <body class="bg-gray-100 h-screen flex justify-center items-center">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
         <h2 class="text-2xl font-semibold text-center mb-6">Add Reservation</h2>
-        <form method="POST" action="{{ route('reservations.store') }}">
+        <form method="POST" action="{{ route('reservations.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-4">

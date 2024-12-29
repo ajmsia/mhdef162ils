@@ -30,23 +30,28 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the incoming request data
         $request->validate([
             'roomName' => 'required',
             'roomCapacity' => 'required|numeric',
-            'image' => 'required|image|mips:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'  // Corrected the 'mips' to 'mimes'
         ]);
 
-        $room = new Room;
-        $room->roomName = $request->roomName;
-        $room->roomCapacity = $request->roomCapacity;
+        // Create a new room instance
+        $rooms = new Rooms;
+        $rooms->roomName = $request->input('roomName');
+        $rooms->roomCapacity = $request->input('roomCapacity');
 
+        // Check if the request contains an image file and store it
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('room-images', 'public');
-            $room->image = $imagePath;
+            $rooms->image = $imagePath;
         }
 
-        $room->save();
+        // Save the room data to the database
+        $rooms->save();
 
+        // Redirect to the rooms list with a success message
         return redirect()->route('rooms.index')
             ->with('success', 'Room created successfully.');
     }

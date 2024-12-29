@@ -51,8 +51,7 @@ class ReservationController extends Controller
             'reserveTime' => 'required|date_format:H:i', 
             'reserveDate' => 'required|date|after_or_equal:today', 
             'purpose' => 'required|string|max:255',
-            'roomID' => 'required|exists:rooms,id',
-            'status' => 'required|string|in:Pending,Approved,Rejected',         
+            'roomID' => 'required|exists:rooms,id',        
         ]);
         
         Reservations::create($reservationData);

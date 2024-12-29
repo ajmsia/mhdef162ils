@@ -72,26 +72,31 @@
                     </table>
 
                     <div class="mt-8 text-center space-x-4">
-                        <!-- Approve Button -->
-                        <form action="#" method="POST" class="inline-block">
+                        <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('PATCH')
+                            <input type="hidden" name="status" value="approved">
                             <button type="submit" 
-                                    class="inline-flex items-center px-6 py-3 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 transition-colors duration-200">
+                                    class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
                                 Approve
                             </button>
                         </form>
 
-                        <!-- Reject Button -->
-                        <form action="#" method="POST" class="inline-block">
+                        <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('PATCH')
+                            <input type="hidden" name="status" value="rejected">
                             <button type="submit" 
-                                    class="inline-flex items-center px-6 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors duration-200">
+                                    class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
                                 Reject
                             </button>
                         </form>
 
-                        <!-- Archive Button -->
-                        <form action="#" method="POST" class="inline-block">
+                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" 
-                                    class="inline-flex items-center px-6 py-3 bg-gray-600 text-white font-medium rounded-md hover:bg-gray-700 transition-colors duration-200">
+                                    class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
                                 Archive
                             </button>
                         </form>
