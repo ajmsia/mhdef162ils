@@ -58,12 +58,5 @@
         </div>
     </main>
 
-    <!-- View Rooms Button -->
-    <a href="{{ route('rooms.index') }}">
-        <button class="fixed bottom-4 left-4 bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300 text-sm">
-            View Rooms
-        </button>
-    </a>
-
 </body>
 </html>

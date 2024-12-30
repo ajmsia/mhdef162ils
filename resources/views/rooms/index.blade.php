@@ -17,7 +17,7 @@
         </div>
         
         <div>
-            <a href="{{ route('librarian.index') }}" class="no-underline">
+            <a href="{{ route('reservations.index') }}" class="no-underline">
                 <button type="button" class="bg-green-500 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-600 transition duration-300">
                     Back
                 </button>
