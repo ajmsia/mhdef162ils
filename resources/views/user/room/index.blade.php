@@ -40,7 +40,7 @@
                 </tbody>
             </table>
             <div class="mt-6">
-                <a href="{{ route('user.index') }}">
+                <a href="{{ route('reservations.usercreate') }}">
                     <button class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
                         Back
                     </button>

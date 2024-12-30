@@ -15,7 +15,7 @@
                 <div class="flex">
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
-                        <a href="{{ route('dashboard') }}">
+                        <a href="http://mhdef162ils.test">
                             <h1 class="text-white text-2xl font-bold">SLIS ILS</h1>
                         </a>
                     </div>
@@ -33,11 +33,11 @@
             </div>
         @endif
         <div class="mb-12">
-            <p class="text-lg mb-6">Choose an option below:</p>
+            <p class="text-lg mb-6">Choose a service below:</p>
             <div class="flex space-x-6 justify-center">
 
                 <!-- Reservations Button -->
-                <a href="{{ route('user.reservation') }}">
+                <a href="{{ route('reservations.usercreate') }}">
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
                         Reservations
                     </button>
@@ -59,13 +59,6 @@
             </div>
         </div>
     </main>
-
-    <!-- View Rooms Button -->
-    <a href="{{ route('userroom.index') }}">
-        <button class="fixed bottom-4 left-4 bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300 text-sm">
-            View Rooms
-        </button>
-    </a>
 
 </body>
 </html>

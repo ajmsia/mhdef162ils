@@ -15,7 +15,7 @@
                 <div class="flex">
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
-                        <a href="{{ route('dashboard') }}">
+                        <a href="http://mhdef162ils.test">
                             <h1 class="text-white text-2xl font-bold">SLIS ILS</h1>
                         </a>
                     </div>
@@ -29,7 +29,7 @@
         <h2 class="text-4xl font-bold mb-8">Librarian Dashboard</h2>
 
         <div class="mb-12">
-            <p class="text-lg mb-6">Choose an option below:</p>
+            <p class="text-lg mb-6">Choose a service below:</p>
 
             <!-- Main Content Container -->
             <div class="flex flex-wrap justify-center gap-6">
