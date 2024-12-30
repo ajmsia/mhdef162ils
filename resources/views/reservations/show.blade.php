@@ -54,11 +54,11 @@
                             </tr>
                             <tr class="border-b border-slate-100">
                                 <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Reservation Time</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->reserveTime }}</td>
+                                <td class="px-6 py-4 text-slate-600">{{ date('h:i A', strtotime($reservation->reserveTime)) }}</td>
                             </tr>
                             <tr class="border-b border-slate-100">
                                 <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Reservation Date</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->reserveDate }}</td>
+                                <td class="px-6 py-4 text-slate-600">{{ date('M d, Y', strtotime($reservation->reserveDate)) }}</td>
                             </tr>
                             <tr class="border-b border-slate-100">
                                 <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Purpose</th>

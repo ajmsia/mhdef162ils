@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\reservations;
 use App\Models\rooms;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
@@ -13,23 +12,18 @@ class ReservationController extends Controller
     {
         $reservations = Reservations::with('rooms')->get();
 
-        foreach($reservations as $reservation) {
-            if (!$reservation->room) {
-                Log::warning("Reservation ID {$reservation->id} has no associated room. Room ID: {$reservation->roomID}");
-            }
-        }
         $rooms = Rooms::all(); 
         return view('reservations.index', compact('reservations', 'rooms'));
 
     }
 
-    public function create()
+    public function create() // For librarian view of reservation form //
     {
         $rooms = Rooms::all(); 
         return view('reservations.create', compact('rooms'));
     }
 
-    public function usercreate()
+    public function usercreate() // For user view of reservation form //
     {
         $rooms = Rooms::all(); 
         return view('reservations.usercreate', compact('rooms'));
@@ -51,11 +45,12 @@ class ReservationController extends Controller
         ]);
         
         Reservations::create($reservationData);
-
+        
+        // For different redirect pages in the form pages after submitting //
         if ($reservationData['userType'] == 'librarian') {
             return redirect()->route('reservations.index')->with('success', 'Reservation added successfully.');
         } else {
-            return redirect()->route('user.index')->with('success', 'Reservation added successfully.');
+            return redirect()->route('user.index')->with('success', 'Reservation added successfully. Please wait for email to confirm reservation.');
         }
         
     }
@@ -64,19 +59,21 @@ class ReservationController extends Controller
     {
         $reservation = Reservations::find($id);
         $rooms = Rooms::all();
+
+        // For message if reservation isn't found //
         if (!$reservation) {
             return redirect()->route('reservations.index')->with('error', 'Reservation not found.');
         }
         return view('reservations.show', compact('reservation', 'rooms'));
     }
 
-
+    // No edit view for reservation. editing would be for the status only which is through buttons in librarian index page //
     public function edit(Request $request, $id)
     {
         
     }
 
-
+    // For the status/action buttons //
     public function update(Request $request, $id)
     {
         $reservations = Reservations::findOrFail($id);
@@ -91,6 +88,7 @@ class ReservationController extends Controller
         return redirect()->route('reservations.index')->with('error', 'No status provided!');
     }
 
+    // For 'archiving' reservations //
     public function destroy($id)
     {
         $reservations = Reservations::findOrFail($id);

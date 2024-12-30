@@ -11,7 +11,7 @@ class rooms extends Model
 
     protected $fillable = ['roomName', 'roomCapacity', 'image'];
 
-
+    // for displaying rooms info //
     public function reservations()
     {
         return $this->hasMany(Reservation::class, 'roomid', 'id');

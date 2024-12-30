@@ -8,6 +8,13 @@
 </head>
 <body class="bg-gray-100 p-6">      
     <h1 class="text-4xl font-bold">User Index</h1>
+    <div>
+    @if(session('success')) <!-- For the message if you successfully applied for reservation -->
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
+    </div>
     <div class="flex space-x-4 mt-6">
         <a href="{{ route('userroom.index') }}">
             <button class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">

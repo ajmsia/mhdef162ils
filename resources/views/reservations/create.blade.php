@@ -12,7 +12,7 @@
         <form method="POST" action="{{ route('reservations.store') }}" enctype="multipart/form-data">
             @csrf
             <!-- This is the librarian version of create. difference is just the buttons. basically the same but this one is for librarians in case they want to reserve a room for someone such as a faculty or smthn -->
-            <input type="hidden" name="userType" value="librarian"><!-- hidden assigned value which allows us to have two craete forms and limits view of users -->
+            <input type="hidden" name="userType" value="Librarian"><!-- hidden assigned value which allows us to have two craete forms and limits view of users -->
             <div class="mb-4">
                 <label for="userFirstName" class="block text-sm font-medium text-gray-700">First Name</label>
                 <input type="text" id="userFirstName" name="userFirstName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
@@ -31,18 +31,6 @@
             <div class="mb-4">
                 <label for="upmail" class="block text-sm font-medium text-gray-700">Email Address</label>
                 <input type="email" id="upmail" name="upmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-            </div>
-
-            <div class="mb-4">
-                <label for="userType" class="block text-sm font-medium text-gray-700">User Type</label>
-                <select id="userType" name="userType" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                    <option value="Undergraduate student">Undergraduate student</option>
-                    <option value="Graduate student">Graduate student</option>
-                    <option value="Faculty">Faculty</option>
-                    <option value="Staff">Staff</option>
-                    <option value="Reps">Reps</option>
-                    <option value="Alumni">Alumni</option>
-                </select>
             </div>
 
             <div class="mb-4">
