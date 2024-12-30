@@ -16,7 +16,7 @@
         }
     </script>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-white font-sans"> <!-- Changed bg-gray-100 to bg-white -->
 
     <!-- Navbar -->
     <nav x-data="{ open: false }" class="bg-black border-b border-gray-700">
@@ -59,4 +59,3 @@
 
 </body>
 </html>
-
