@@ -54,13 +54,6 @@
                         Consultation
                     </button>
                 </a>
-
-                <!-- Report Button -->
-                <a href="{{ route('librarian.report') }}">
-                    <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
-                        Report
-                    </button>
-                </a>
             </div>
         </div>
     </main>
