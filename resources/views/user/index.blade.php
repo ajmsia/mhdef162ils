@@ -27,7 +27,11 @@
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12 text-center mt-0">
         <h2 class="text-4xl font-bold mb-8">Patron Dashboard</h2>
-
+        @if(session('success')) <!-- For the message if you successfully applied for reservation -->
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        @endif
         <div class="mb-12">
             <p class="text-lg mb-6">Choose an option below:</p>
             <div class="flex space-x-6 justify-center">
