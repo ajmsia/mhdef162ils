@@ -51,7 +51,7 @@
             <h3 class="text-xl font-semibold mb-6">CONTACT US</h3>
             <p class="text-gray-600 text-lg">Location:</p>
             <p class="text-gray-600 text-lg">SLIS New Building, Quirino Avenue cor. Africa Street,</p>
-            <p class="text-gray-600 text-lg">UP Campus Diliman, QC, Quezon City, Philippines</p>
+            <p class="text-gray-600 text-lg">UP Campus Diliman, Quezon City, Philippines</p>
 
             <p class="mt-6 text-gray-600 text-lg">Email: <a href="mailto:library.slis.updiliman@up.edu.ph" class="text-blue-500 hover:underline">library.slis.updiliman@up.edu.ph</a></p>
         </section>
