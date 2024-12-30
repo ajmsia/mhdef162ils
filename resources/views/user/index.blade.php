@@ -6,7 +6,7 @@
     <title>Patron Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-white font-sans"> <!-- Changed bg-gray-100 to bg-white -->
 
     <!-- Black Top Menu Bar -->
     <nav class="bg-black border-b border-gray-700">
