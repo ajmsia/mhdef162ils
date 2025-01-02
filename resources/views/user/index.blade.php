@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
+<!-- Header -->
 <div class="bg-black h-16 w-full absolute top-0 left-0">
 
 <nav x-data="{ open: false }" class="bg-black border-b">
@@ -34,8 +35,11 @@
         <h2 class="text-4xl font-bold mb-8 mt-10">Patron Dashboard</h2>
 
         <div class="mb-12">
-            <p class="text-lg">Choose an option below:</p>
+            <p class="text-lg mb-10">Choose an option below:</p>
             <div class="flex space-x-6 justify-center">
+
+            <!-- Main Content Container -->
+            <div class="flex flex-wrap justify-center gap-6 mt-23">
 
                 <div class="flex flex-col">
                 <!-- Reservations Button -->
@@ -66,6 +70,7 @@
                         Consultations
                     </button>
                 </a>
+                </div>
             </div>
         </div>
     </main>
