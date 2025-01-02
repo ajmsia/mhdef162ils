@@ -22,8 +22,16 @@
                 </div>
             </div>
         </div>
-
     </nav>
+
+    <!-- Back Button -->
+    <div class="flex justify-start mt-8 px-6">
+        <a href="{{ route('reservations.index') }}">
+            <button class="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
+                Back
+            </button>
+        </a>
+    </div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12 text-center">
