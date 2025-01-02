@@ -54,29 +54,32 @@
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Room Name</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Room Capacity</th>
-                        <th class="py-3 px-6 text-left border-b border-gray-300">Actions</th>
+                        <th class="py-3 px-6 text-left border-b border-r border-gray-300">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="roomTable">
                     @foreach($rooms as $room)
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
-                        <td class="py-3 px-6">
+                        <td class="py-3 px-6 border-r border-gray-300">
                             <a href="{{ route('rooms.show', ['room' => $room->id]) }}" class="text-black hover:text-blue-500">
                                 {{ $room->roomName }}
                             </a>
                         </td>
-                        <td class="py-3 px-6">{{ $room->roomCapacity }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $room->roomCapacity }}</td>
                         <td class="py-3 px-6">
-                            <a href="{{ route('rooms.edit', $room->id) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 mr-4">
-                                Edit
-                            </a>
-                            <form action="{{ route('rooms.destroy', $room->id) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600" onclick="return confirm('Are you sure you want to delete this room?')">
-                                    Delete
-                                </button>
-                            </form>
+                            <!-- Action Buttons Container with spacing -->
+                            <div class="flex space-x-4">
+                                <a href="{{ route('rooms.edit', $room->id) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                                    Edit
+                                </a>
+                                <form action="{{ route('rooms.destroy', $room->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600" onclick="return confirm('Are you sure you want to delete this room?')">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
