@@ -55,21 +55,14 @@
                         <option value="Visual Material">Visual Material</option>
                     </select>
                 </div>
-         <!-- Resource Title -->
+         <!-- Title -->
             <div class="mb-4">
                     <label for="title" class="block text-sm font-medium text-gray-700 mb-3">Title</label>
-                    <select id="title" name="title" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                        <option value="Undergraduate student">Undergraduate student</option>
-                        <option value="Graduate student">Graduate student</option>
-                        <option value="Faculty">Faculty</option>
-                        <option value="Staff">Staff</option>
-                        <option value="Reps">Reps</option>
-                        <option value="Alumni">Alumni</option>
-                    </select>
+                    <input id="title" name="title" required class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 </div>
 
             </div>
-         <!-- Email Address -->
+         <!-- Tuklas Link -->
          <div class="mb-4">
                     <label for="tuklasLink" class="block text-sm font-medium text-gray-700 mb-3">Tuklas Link</label>
                     <input type="url" id="tuklasLink" name="tuklasLink" required class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
@@ -80,7 +73,8 @@
                     <button type="button" onclick="window.location.href='{{ route('user.index') }}';" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">Cancel</button>
                     <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition duration-300">Add Request</button>
                 </div>
-    
-        </form>
-    </main>
+
+    </form> 
+
+</main>
     
