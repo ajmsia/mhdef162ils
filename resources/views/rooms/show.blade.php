@@ -6,7 +6,7 @@
     <title>Room Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 h-screen">
+<body class="bg-gray-100">
     <!-- Top Navigation -->
     <nav class="bg-black border-b border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,8 +23,8 @@
         </div>
     </nav>
 
-    <!-- Back Button -->
-    <div class="flex justify-start mt-8 px-6">
+     <!-- Back Button -->
+     <div class="flex justify-start mt-8 px-6">
         <a href="{{ route('rooms.index') }}">
             <button class="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
                 Back
@@ -33,8 +33,8 @@
     </div>
 
     <!-- Main Content -->
-    <div class="flex justify-center items-center h-full">
-        <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl">
+    <div class="flex justify-center items-center py-6">
+        <div class="bg-white shadow-lg rounded-lg p-6 max-w-3xl w-full">
             <h1 class="text-2xl font-bold text-gray-800 mb-4">Room Details</h1>
             <div class="flex flex-col items-center">
                 <!-- Room Image -->
