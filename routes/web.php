@@ -8,9 +8,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoomController;
 use App\Http\Controllers\UserReservationController;
 
-// allows get and patch when it normally doesnt //
-Route::match(['GET', 'PATCH'], '/reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
-// stuff for calling stuff on other tables //
+// Corrected edit route, only GET should be allowed for viewing the edit form
+Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
+
+// Routes for other pages
 Route::get('/user/rooms', [UserRoomController::class, 'index'])->name('user.rooms.index');
 Route::get('/reservations/user-create', [ReservationController::class, 'usercreate'])->name('reservations.usercreate');
 Route::get('/users', [UserController::class, 'index'])->name('user.index');

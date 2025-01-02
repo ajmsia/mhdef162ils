@@ -51,45 +51,62 @@ class ReservationController extends Controller
         return redirect()->route('reservations.usercreate')->with('success', 'Reservation successfully added!');
     }
 
-    public function show(Reservations $reservations, $id) 
+    // Corrected show method with route model binding
+    public function show(Reservations $reservation) 
     {
-        $reservation = Reservations::find($id);
         $rooms = Rooms::all();
-
-        // For message if reservation isn't found
-        if (!$reservation) {
-            return redirect()->route('reservations.index')->with('error', 'Reservation not found.');
-        }
         return view('reservations.show', compact('reservation', 'rooms'));
     }
 
-    // No edit view for reservation. Editing would be for the status only, which is handled through buttons in librarian index page
-    public function edit(Request $request, $id)
+    // Implement the edit function for updating reservation details
+    public function edit(Reservations $reservation)
     {
-        // Logic for edit can go here if necessary
+        $rooms = Rooms::all();
+
+        // Pass the reservation data to the edit view
+        return view('reservations.edit', compact('reservation', 'rooms'));
+    }
+
+    // Handle the update of reservation details
+    public function update(Request $request, Reservations $reservation)
+    {
+        // Validate the input data
+        $validatedData = $request->validate([
+            'userFirstName' => 'required|string|max:255',
+            'userLastName' => 'required|string|max:255',
+            'userMiddleName' => 'nullable|string|max:255',
+            'upmail' => 'required|email|max:255',
+            'userType' => 'required|string',
+            'college' => 'required|string',
+            'roomID' => 'required|integer',
+            'reserveTime' => 'required|string',
+            'reserveDate' => 'required|date',
+            'purpose' => 'required|string',
+        ]);
+
+        // Update the reservation with new data
+        $reservation->update($validatedData);
+
+        return redirect()->route('reservations.index')->with('success', 'Reservation updated successfully!');
     }
 
     // For the status/action buttons
-    public function update(Request $request, $id)
+    public function updateStatus(Request $request, Reservations $reservation)
     {
-        $reservations = Reservations::findOrFail($id);
-
         if ($request->has('status')) {
-            $reservations->status = $request->input('status');
-            $reservations->save();
+            $reservation->status = $request->input('status');
+            $reservation->save();
 
-            return redirect()->route('reservations.index')->with('success', 'Reservation status updated to ' . $reservations->status . '!');
+            return redirect()->route('reservations.index')->with('success', 'Reservation status updated to ' . $reservation->status . '!');
         }
 
         return redirect()->route('reservations.index')->with('error', 'No status provided!');
     }
 
     // For 'archiving' reservations
-    public function destroy($id)
+    public function destroy(Reservations $reservation)
     {
-        $reservations = Reservations::findOrFail($id);
-
-        $reservations->delete();
+        $reservation->delete();
 
         return redirect()->route('reservations.index')->with('success', 'Reservation archived successfully!');
     }
