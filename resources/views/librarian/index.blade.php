@@ -51,13 +51,12 @@
                     </button>
                 </a>
 
-                <!-- View Rooms Button (Top-Left) -->
-              <a href="{{ route('rooms.index') }}">
+            <!-- View Rooms Button -->
+            <a href="{{ route('rooms.index') }}">
                 <button class="mt-3 top-6 left-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
                     View Rooms
-                </button>
+                    </button>
                 </a>
-
                 </div>
 
 

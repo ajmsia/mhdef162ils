@@ -41,40 +41,48 @@
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12 text-center">
+    <main class="container mx-auto px-6 py-12 text-center align-content-center">
         <h2 class="text-4xl font-bold mb-8">Add Reservation</h2>
 
-        <div class="bg-gray-200 p-8 rounded-md shadow-lg max-w-4xl mx-auto">
+        <div class="bg-gray-200 p-8 rounded-md shadow-lg max-w-4xl mx-auto flex items-center justify-center">
             <form method="POST" action="{{ route('reservations.store') }}" enctype="multipart/form-data">
                 @csrf
+                
+            <div class="flex flex-col md:flex-row gap-4">
                 <!-- First Name -->
-                <div class="mb-4">
+                <div class="mb-4 flex-1">
                     <label for="userFirstName" class="block text-sm font-medium text-gray-700 mb-3">First Name</label>
-                    <input type="text" id="userFirstName" name="userFirstName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="text" id="userFirstName" name="userFirstName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 </div>
 
-                <!-- Last Name -->
-                <div class="mb-4">
-                    <label for="userLastName" class="block text-sm font-medium text-gray-700 mb-3">Last Name</label>
-                    <input type="text" id="userLastName" name="userLastName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                </div>
 
                 <!-- Middle Name -->
                 <div class="mb-4">
                     <label for="userMiddleName" class="block text-sm font-medium text-gray-700 mb-3">Middle Name</label>
-                    <input type="text" id="userMiddleName" name="userMiddleName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="text" id="userMiddleName" name="userMiddleName" placeholder="Leave blank if none!" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 </div>
+
+                <!-- Last Name -->
+                <div class="mb-4 flex-1">
+                    <label for="userLastName" class="block text-sm font-medium text-gray-700 mb-3">Last Name</label>
+                    <input type="text" id="userLastName" name="userLastName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                </div>
+
+            </div>
+
 
                 <!-- Email Address -->
                 <div class="mb-4">
                     <label for="upmail" class="block text-sm font-medium text-gray-700 mb-3">Email Address</label>
-                    <input type="email" id="upmail" name="upmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="email" id="upmail" name="upmail" required class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 </div>
 
+
+            <div class="flex flex-col md:flex-row gap-4">
                 <!-- User Type -->
                 <div class="mb-4">
                     <label for="userType" class="block text-sm font-medium text-gray-700 mb-3">User Type</label>
-                    <select id="userType" name="userType" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <select id="userType" name="userType" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                         <option value="Undergraduate student">Undergraduate student</option>
                         <option value="Graduate student">Graduate student</option>
                         <option value="Faculty">Faculty</option>
@@ -87,7 +95,8 @@
                 <!-- College -->
                 <div class="mb-4">
                     <label for="college" class="block text-sm font-medium text-gray-700 mb-3">College</label>
-                    <select id="college" name="college" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <select id="college" name="college" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <option value="N/A">N/A</option>
                         <option value="College of Arts and Letters">College of Arts and Letters</option>
                         <option value="College of Fine Arts">College of Fine Arts</option>
                         <option value="College of Human Kinetics">College of Human Kinetics</option>
@@ -116,11 +125,13 @@
                         <option value="College of Social Work and Community Development">College of Social Work and Community Development</option>
                     </select>
                 </div>
+            </div>
 
+            <div class="flex flex-col md:flex-row gap-4 flex items-center justify-center">
                 <!-- Room -->
                 <div class="mb-4">
                     <label for="roomID" class="block text-sm font-medium text-gray-700 mb-3">Room</label>
-                    <select id="roomID" name="roomID" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <select id="roomID" name="roomID" required class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                         @foreach($rooms as $room)
                             <option value="{{ $room->id }}">{{ $room->roomName }}</option>
                         @endforeach
@@ -130,7 +141,7 @@
                 <!-- Reservation Time -->
                 <div class="mb-4">
                     <label for="reserveTime" class="block text-sm font-medium text-gray-700 mb-3">Reservation Time</label>
-                    <select id="reserveTime" name="reserveTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <select id="reserveTime" name="reserveTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                         <option value="08:00">8:00 AM</option>
                         <option value="09:00">9:00 AM</option>
                         <option value="10:00">10:00 AM</option>
@@ -148,13 +159,15 @@
                 <!-- Reservation Date -->
                 <div class="mb-4">
                     <label for="reserveDate" class="block text-sm font-medium text-gray-700 mb-3">Reservation Date</label>
-                    <input type="date" id="reserveDate" name="reserveDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="date" id="reserveDate" name="reserveDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 </div>
+
+            </div>
 
                 <!-- Purpose -->
                 <div class="mb-4">
                     <label for="purpose" class="block text-sm font-medium text-gray-700 mb-3">Purpose</label>
-                    <textarea id="purpose" name="purpose" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                    <textarea id="purpose" name="purpose" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
                 </div>
 
                 <!-- Action Buttons -->

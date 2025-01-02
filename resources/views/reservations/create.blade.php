@@ -43,35 +43,40 @@
                 <!-- Hidden User Type -->
                 <input type="hidden" name="userType" value="Librarian">
 
-                <!-- First Name -->
-                <div class="mb-4">
-                    <label for="userFirstName" class="block text-sm font-medium text-gray-700 mb-3">First Name</label>
-                    <input type="text" id="userFirstName" name="userFirstName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                </div>
-
-                <!-- Last Name -->
-                <div class="mb-4">
-                    <label for="userLastName" class="block text-sm font-medium text-gray-700 mb-3">Last Name</label>
-                    <input type="text" id="userLastName" name="userLastName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                </div>
-
-                <!-- Middle Name -->
-                <div class="mb-4">
-                    <label for="userMiddleName" class="block text-sm font-medium text-gray-700 mb-3">Middle Name</label>
-                    <input type="text" id="userMiddleName" name="userMiddleName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <!-- First Name -->
+                    <div class="mb-4 flex-1">
+                        <label for="userFirstName" class="block text-sm font-medium text-gray-700 mb-3">First Name</label>
+                        <input type="text" id="userFirstName" name="userFirstName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    </div>
+    
+    
+                    <!-- Middle Name -->
+                    <div class="mb-4">
+                        <label for="userMiddleName" class="block text-sm font-medium text-gray-700 mb-3">Middle Name</label>
+                        <input type="text" id="userMiddleName" name="userMiddleName" placeholder="Leave blank if none!" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    </div>
+    
+                    <!-- Last Name -->
+                    <div class="mb-4 flex-1">
+                        <label for="userLastName" class="block text-sm font-medium text-gray-700 mb-3">Last Name</label>
+                        <input type="text" id="userLastName" name="userLastName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    </div>
+    
                 </div>
 
                 <!-- Email Address -->
-                <div class="mb-4">
+                  <div class="mb-4">
                     <label for="upmail" class="block text-sm font-medium text-gray-700 mb-3">Email Address</label>
-                    <input type="email" id="upmail" name="upmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <input type="email" id="upmail" name="upmail" required class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 </div>
 
                 <!-- College -->
                 <div class="mb-4">
                     <label for="college" class="block text-sm font-medium text-gray-700 mb-3">College</label>
-                    <select id="college" name="college" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                    <option value="College of Arts and Letters">College of Arts and Letters</option>
+                    <select id="college" name="college" required class="w-[500px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <option value="N/A">N/A</option>
+                        <option value="College of Arts and Letters">College of Arts and Letters</option>
                         <option value="College of Fine Arts">College of Fine Arts</option>
                         <option value="College of Human Kinetics">College of Human Kinetics</option>
                         <option value="College of Mass Communication">College of Mass Communication</option>
@@ -100,52 +105,53 @@
                     </select>
                 </div>
 
-                <!-- Room -->
-                <div class="mb-4">
-                    <label for="roomID" class="block text-sm font-medium text-gray-700 mb-3">Room</label>
-                    <select id="roomID" name="roomID" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                        @foreach($rooms as $room)
-                            <option value="{{ $room->id }}">{{ $room->roomName }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <!-- Reservation Time -->
-                <div class="mb-4">
-                    <label for="reserveTime" class="block text-sm font-medium text-gray-700 mb-3">Reservation Time</label>
-                    <select id="reserveTime" name="reserveTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                        <option value="08:00">8:00 AM</option>
-                        <option value="09:00">9:00 AM</option>
-                        <option value="08:00">8:00 AM</option>
-                        <option value="09:00">9:00 AM</option>
-                        <option value="10:00">10:00 AM</option>
-                        <option value="11:00">11:00 AM</option>
-                        <option value="12:00">12:00 PM</option>
-                        <option value="13:00">1:00 PM</option>
-                        <option value="14:00">2:00 PM</option>
-                        <option value="15:00">3:00 PM</option>
-                        <option value="16:00">4:00 PM</option>
-                        <option value="17:00">5:00 PM</option>
-                        <option value="18:00">6:00 PM</option>
-                    </select>
-                </div>
-
-                <!-- Reservation Date -->
-                <div class="mb-4">
-                    <label for="reserveDate" class="block text-sm font-medium text-gray-700 mb-3">Reservation Date</label>
-                    <input type="date" id="reserveDate" name="reserveDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <div class="flex flex-col md:flex-row gap-4 flex items-center justify-center">
+                    <!-- Room -->
+                    <div class="mb-4">
+                        <label for="roomID" class="block text-sm font-medium text-gray-700 mb-3">Room</label>
+                        <select id="roomID" name="roomID" required class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            @foreach($rooms as $room)
+                                <option value="{{ $room->id }}">{{ $room->roomName }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+    
+                    <!-- Reservation Time -->
+                    <div class="mb-4">
+                        <label for="reserveTime" class="block text-sm font-medium text-gray-700 mb-3">Reservation Time</label>
+                        <select id="reserveTime" name="reserveTime" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            <option value="08:00">8:00 AM</option>
+                            <option value="09:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="17:00">5:00 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                        </select>
+                    </div>
+    
+                    <!-- Reservation Date -->
+                    <div class="mb-4">
+                        <label for="reserveDate" class="block text-sm font-medium text-gray-700 mb-3">Reservation Date</label>
+                        <input type="date" id="reserveDate" name="reserveDate" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    </div>
+    
                 </div>
 
                 <!-- Purpose -->
                 <div class="mb-4">
                     <label for="purpose" class="block text-sm font-medium text-gray-700 mb-3">Purpose</label>
-                    <textarea id="purpose" name="purpose" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                    <textarea id="purpose" name="purpose" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="flex justify-center mt-6 gap-4">
-                    <button type="button" onclick="window.location.href='{{ route('reservations.index') }}';" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">Cancel</button>
-                    <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition duration-300">Add Reservation</button>
+                    <button type="button" onclick="window.location.href='{{ route('reservations.index') }}';" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-yellow-600 transition duration-300">Cancel</button>
+                    <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-yellow-600 transition duration-300">Add Reservation</button>
                 </div>
 
             </form>

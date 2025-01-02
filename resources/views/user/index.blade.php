@@ -36,15 +36,22 @@
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12 text-center mt-0">
         <h2 class="text-4xl font-bold mb-8">Patron Dashboard</h2>
+
         @if(session('success')) <!-- For the message if you successfully applied for reservation -->
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
                 <span class="block sm:inline">{{ session('success') }}</span>
             </div>
         @endif
+
         <div class="mb-12">
             <p class="text-lg mb-6">Choose a service below:</p>
             <div class="flex space-x-6 justify-center">
 
+
+            <!-- Main Content Container -->
+            <div class="flex flex-wrap justify-center gap-6">
+
+                <div class="flex flex-col">
                 <!-- Reservations Button -->
                 <a href="{{ route('reservations.usercreate') }}">
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
@@ -54,7 +61,7 @@
 
              <!-- Rooms Button -->
              <a href="{{ route('userroom.index') }}">
-                    <button class="mt-2 top-6 left-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
+                    <button class="mt-3 top-6 left-6 bg-white text-black border-gray-800 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300">
                         View Rooms
                     </button>
                 </a>
@@ -72,11 +79,12 @@
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
                         Consultations
                     </button>
-                </a>
+                    </a>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
 </body>
 </html>
