@@ -67,7 +67,7 @@
                         </td>
                         <td class="py-3 px-6">{{ $room->roomCapacity }}</td>
                         <td class="py-3 px-6">
-                            <a href="{{ route('rooms.edit', $room->id) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                            <a href="{{ route('rooms.edit', $room->id) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 mr-4">
                                 Edit
                             </a>
                             <form action="{{ route('rooms.destroy', $room->id) }}" method="POST" class="inline">
