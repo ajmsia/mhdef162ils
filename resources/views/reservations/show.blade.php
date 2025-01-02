@@ -6,110 +6,131 @@
     <title>Reservations Table</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-white font-sans">
 
-<body>
-    <div class="min-h-screen p-8">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-                <div class="border-b border-gray-200 bg-slate-800 px-8 py-6">
-                    <h1 class="text-3xl font-serif text-white text-center">Reservation Details</h1>
-                </div>
-
-                <div class="p-6">
-                    <table class="w-full text-sm">
-                        <tbody>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50 w-1/3">First Name</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->userFirstName }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Last Name</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->userLastName }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Middle Name</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->userMiddleName ?? 'N/A' }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Email Address</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->upmail }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">College</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->college }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">User Type</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->userType }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Room</th>
-                                <td class="px-6 py-4 text-slate-600">
-                                    @foreach($rooms as $room) <!-- Allows us to get room data from another table and display name here -->
-                                        @if($room->id == $reservation->roomID)
-                                            {{ $room->roomName }}
-                                        @endif
-                                    @endforeach
-                                </td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Reservation Time</th>
-                                <td class="px-6 py-4 text-slate-600">{{ date('h:i A', strtotime($reservation->reserveTime)) }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Reservation Date</th>
-                                <td class="px-6 py-4 text-slate-600">{{ date('M d, Y', strtotime($reservation->reserveDate)) }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Purpose</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->purpose }}</td>
-                            </tr>
-                            <tr class="border-b border-slate-100">
-                                <th class="px-6 py-4 text-left text-slate-700 font-semibold bg-slate-50">Purpose</th>
-                                <td class="px-6 py-4 text-slate-600">{{ $reservation->status }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="mt-8 text-center space-x-4">
-                        <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('PATCH')
-                            <input type="hidden" name="status" value="approved">
-                            <button type="submit" 
-                                    class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
-                                Approve
-                            </button>
-                        </form>
-
-                        <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('PATCH')
-                            <input type="hidden" name="status" value="rejected">
-                            <button type="submit" 
-                                    class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
-                                Reject
-                            </button>
-                        </form>
-
-                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" 
-                                    class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
-                                Archive
-                            </button>
-                        </form>
-                    </div>
-                    <div>
-                        <a href="{{ route('reservations.index') }}" 
-                            class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 transition-colors duration-200">
-                                <i class="fas fa-arrow-left mr-2"></i>
-                                Back to Reservations
+    <!-- Navbar -->
+    <nav class="bg-black border-b border-gray-700 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex">
+                    <!-- Logo -->
+                    <div class="shrink-0 flex items-center">
+                        <a href="http://mhdef162ils.test">
+                            <h1 class="text-white text-2xl font-bold">SLIS ILS</h1>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
+    </nav>
+
+    <!-- Back Button -->
+    <div class="flex justify-start mt-8 px-6">
+        <a href="{{ route('reservations.index') }}">
+            <button class="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
+                Back
+            </button>
+        </a>
     </div>
+
+    <!-- Reservation Details Title -->
+    <h2 class="text-4xl font-bold text-center mb-2 mt-4">Reservation Details</h2>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-6 py-12">
+        @if(session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        @endif
+
+        <!-- Reservation Details Table with Border -->
+        <div class="bg-gray-200 p-8 rounded-md shadow-lg border border-gray-300">
+            <table class="min-w-full bg-white border-collapse">
+                <tbody>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300 w-1/3">First Name</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->userFirstName }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Last Name</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->userLastName }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Middle Name</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->userMiddleName ?? 'N/A' }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Email Address</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->upmail }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">College</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->college }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">User Type</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->userType }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Room</th>
+                        <td class="py-3 px-6 border-r border-gray-300">
+                            @foreach($rooms as $room)
+                                @if($room->id == $reservation->roomID)
+                                    {{ $room->roomName }}
+                                @endif
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Reservation Time</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ date('h:i A', strtotime($reservation->reserveTime)) }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Reservation Date</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ date('M d, Y', strtotime($reservation->reserveDate)) }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Purpose</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->purpose }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Status</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="mt-8 text-center space-x-4">
+                <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="status" value="approved">
+                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
+                        Approve
+                    </button>
+                </form>
+
+                <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="status" value="rejected">
+                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
+                        Reject
+                    </button>
+                </form>
+
+                <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
+                        Archive
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </body>
+</html>
+
