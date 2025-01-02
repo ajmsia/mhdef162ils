@@ -58,7 +58,6 @@
         @endif
 
         <!-- Reservations Table -->
-        
         <div class="bg-gray-200 p-8 rounded-md shadow-lg">
             <table class="min-w-full bg-white border-separate border-spacing-0">
                 <thead>
@@ -94,31 +93,34 @@
                         <td class="py-3 px-6 border-r border-gray-300">{{ date('h:i A', strtotime($reservation->reserveTime)) }}</td>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->status }}</td>
                         <td class="py-3 px-6">
-                            <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
-                                @csrf
-                                @method('PATCH')
-                                <input type="hidden" name="status" value="approved">
-                                <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
-                                    Approve
-                                </button>
-                            </form>
+                            <!-- Action Buttons Container with spacing -->
+                            <div class="flex space-x-4">
+                                <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="approved">
+                                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
+                                        Approve
+                                    </button>
+                                </form>
 
-                            <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
-                                @csrf
-                                @method('PATCH')
-                                <input type="hidden" name="status" value="rejected">
-                                <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
-                                    Reject
-                                </button>
-                            </form>
+                                <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="rejected">
+                                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
+                                        Reject
+                                    </button>
+                                </form>
 
-                            <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="inline-block">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
-                                    Archive
-                                </button>
-                            </form>
+                                <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
+                                        Archive
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
