@@ -34,7 +34,7 @@
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12 text-center">
+    <main class="container mx-auto px-6 py-6 text-center">
         <h2 class="text-4xl font-bold mb-8">Edit Reservation</h2>
 
         @if(session('success'))
