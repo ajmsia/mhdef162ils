@@ -23,11 +23,11 @@
         </div>
     </nav>
 
-    <!-- Back to Room List Button -->
-    <div class="px-4 sm:px-6 lg:px-8 mt-4">
-        <a href="{{ route('rooms.index') }}">
-            <button class="bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300">
-                Back to Rooms
+    <!-- Back Button -->
+    <div class="flex justify-start mt-8 px-6">
+        <a href="{{ route('librarian.index') }}">
+            <button class="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
+                Back
             </button>
         </a>
     </div>
