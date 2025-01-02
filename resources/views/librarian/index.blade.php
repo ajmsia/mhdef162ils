@@ -6,16 +6,16 @@
     <title>Librarian Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 p-6">      
+<body class="bg-white font-sans"> <!-- Changed bg-gray-100 to bg-white -->
 
-<div class="bg-black h-16 w-full absolute top-0 left-0">
-<nav x-data="{ open: false }" class="bg-black border-b">
+    <!-- Black Top Menu Bar -->
+    <nav class="bg-black border-b border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex">
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
-                        <a href="{{ route('welcome') }}">
+                        <a href="http://mhdef162ils.test">
                             <h1 class="text-white text-2xl font-bold">SLIS ILS</h1>
                         </a>
                     </div>
@@ -23,23 +23,30 @@
             </div>
         </div>
     </nav>
-</div>
 
+    <!-- Back Button -->
+    <div class="flex justify-start mt-8 px-6">
+        <a href="http://mhdef162ils.test">
+            <button class="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
+                Back
+            </button>
+        </a>
+    </div>
 
-<main class="container mx-auto px-6 py-12 mt-8 text-center">
-    <h2 class="text-4xl font-bold mb-8">Librarian Dashboard</h2>
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 text-center mt-0">
+        <h2 class="text-4xl font-bold mb-8">Librarian Dashboard</h2>
 
-    <div class="mb-12">
-        <p class="text-lg mb-6">Choose an option below:</p>
-        <div class="space-y-6">
+        <div class="mb-12">
+            <p class="text-lg mb-6">Choose a service below:</p>
 
             <!-- Main Content Container -->
-            <div class="flex flex-wrap justify-center gap-6 mt-24">
+            <div class="flex flex-wrap justify-center gap-6">
 
                 <div class="flex flex-col">
                 <!-- Reservations Button -->
                 <a href="{{ route('reservations.index') }}">
-                    <button class="bg-green-500 text-white py-6 px-16 rounded-lg hover:bg-green-600 transition duration-300 text-xl">
+                    <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
                         Reservations
                     </button>
                 </a>
@@ -56,28 +63,20 @@
 
                 <!-- Request Button -->
                 <a href="{{ route('librarian.request') }}">
-                    <button class="bg-yellow-500 text-white py-6 px-16 rounded-lg hover:bg-yellow-600 transition duration-300 text-xl">
-                        Request
+                    <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
+                        Requests
                     </button>
                 </a>
 
                 <!-- Consultation Button -->
                 <a href="{{ route('librarian.consultation') }}">
-                    <button class="bg-purple-500 text-white py-6 px-16 rounded-lg hover:bg-purple-600 transition duration-300 text-xl">
-                        Consultation
+                    <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
+                        Consultations
                     </button>
                 </a>
-
-                <!-- Report Button -->
-                <a href="{{ route('librarian.report') }}">
-                    <button class="bg-red-500 text-white py-6 px-16 rounded-lg hover:bg-red-600 transition duration-300 text-xl">
-                        Report
-                    </button>
-                </a>
-
             </div>
         </div>
-    </div>
-</main>
+    </main>
+
 </body>
 </html>

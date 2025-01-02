@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\rooms;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Storage; // For the images //
 
 class RoomController extends Controller
 {
@@ -33,6 +33,8 @@ class RoomController extends Controller
         $rooms->roomName = $request->input('roomName');
         $rooms->roomCapacity = $request->input('roomCapacity');
 
+
+        // for the image upload //
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('room-images', 'public');
             $rooms->image = $imagePath;
@@ -68,6 +70,7 @@ class RoomController extends Controller
     
         $rooms = Rooms::findOrFail($id);
         
+        // for replacing image //
         if ($request->hasFile('image')) {
             try {
                 
@@ -100,6 +103,7 @@ class RoomController extends Controller
         $rooms->roomName = $request->roomName;
         $rooms->roomCapacity = $request->roomCapacity;
         
+        // for errors //
         try {
             $rooms->save();
             \Log::info('Room saved successfully with image: ' . $rooms->image);
@@ -117,7 +121,7 @@ class RoomController extends Controller
     {
         $rooms = rooms::findOrFail($id);
 
-        // Delete associated image if exists
+        // delete image if it exists //
         if ($rooms->image) {
             Storage::disk('public')->delete($rooms->image);
         }

@@ -2,102 +2,112 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\reservations;
-use App\Models\rooms;
+use App\Models\Reservations;
+use App\Models\Rooms;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
     public function index()
     {
         $reservations = Reservations::with('rooms')->get();
-
-        foreach($reservations as $reservation) {
-            if (!$reservation->room) {
-                Log::warning("Reservation ID {$reservation->id} has no associated room. Room ID: {$reservation->roomID}");
-            }
-        }
         $rooms = Rooms::all(); 
         return view('reservations.index', compact('reservations', 'rooms'));
-
     }
 
-    public function create()
+    public function create() // For librarian view of reservation form //
     {
         $rooms = Rooms::all(); 
         return view('reservations.create', compact('rooms'));
     }
 
-    public function usercreate()
+    public function usercreate() // For user view of reservation form //
     {
         $rooms = Rooms::all(); 
         return view('reservations.usercreate', compact('rooms'));
     }
 
+    // Updated store method with custom validation and logic
     public function store(Request $request)
     {
-        $reservationData = $request->validate([
-            'userFirstName' => 'required|string|max:50',
-            'userLastName' => 'required|string|max:50',
-            'userMiddleName' => 'nullable|string|max:50', 
-            'upmail' => 'required|email|max:100',
-            'college' => 'required|string|max:100',
-            'userType' => 'required|string|max:50',
-            'reserveTime' => 'required|date_format:H:i', 
-            'reserveDate' => 'required|date|after_or_equal:today', 
-            'purpose' => 'required|string|max:255',
-            'roomID' => 'required|exists:rooms,id',        
+        // Validate and save the reservation
+        $validatedData = $request->validate([
+            'userFirstName' => 'required|string|max:255',
+            'userLastName' => 'required|string|max:255',
+            'userMiddleName' => 'nullable|string|max:255',
+            'upmail' => 'required|email|max:255',
+            'userType' => 'required|string',
+            'college' => 'required|string',
+            'roomID' => 'required|integer',
+            'reserveTime' => 'required|string',
+            'reserveDate' => 'required|date',
+            'purpose' => 'required|string',
         ]);
-        
-        Reservations::create($reservationData);
 
-        if ($reservationData['userType'] == 'librarian') {
-            return redirect()->route('reservations.index')->with('success', 'Reservation added successfully.');
-        } else {
-            return redirect()->route('user.index')->with('success', 'Reservation added successfully.');
-        }
-        
+        // Create the reservation using the validated data
+        Reservations::create($validatedData);
+
+        // Redirect to appropriate page with a success message
+        return redirect()->route('reservations.usercreate')->with('success', 'Reservation successfully added!');
     }
- 
-    public function show(reservations $reservations, $id) 
+
+    // Corrected show method with route model binding
+    public function show(Reservations $reservation) 
     {
-        $reservation = Reservations::find($id);
         $rooms = Rooms::all();
-        if (!$reservation) {
-            return redirect()->route('reservations.index')->with('error', 'Reservation not found.');
-        }
         return view('reservations.show', compact('reservation', 'rooms'));
     }
 
-
-    public function edit(Request $request, $id)
+    // Implement the edit function for updating reservation details
+    public function edit(Reservations $reservation)
     {
-        
+        $rooms = Rooms::all();
+
+        // Pass the reservation data to the edit view
+        return view('reservations.edit', compact('reservation', 'rooms'));
     }
 
-
-    public function update(Request $request, $id)
+    // Handle the update of reservation details
+    public function update(Request $request, Reservations $reservation)
     {
-        $reservations = Reservations::findOrFail($id);
+        // Validate the input data
+        $validatedData = $request->validate([
+            'userFirstName' => 'required|string|max:255',
+            'userLastName' => 'required|string|max:255',
+            'userMiddleName' => 'nullable|string|max:255',
+            'upmail' => 'required|email|max:255',
+            'userType' => 'required|string',
+            'college' => 'required|string',
+            'roomID' => 'required|integer',
+            'reserveTime' => 'required|string',
+            'reserveDate' => 'required|date',
+            'purpose' => 'required|string',
+        ]);
 
+        // Update the reservation with new data
+        $reservation->update($validatedData);
+
+        return redirect()->route('reservations.index')->with('success', 'Reservation updated successfully!');
+    }
+
+    // For the status/action buttons
+    public function updateStatus(Request $request, Reservations $reservation)
+    {
         if ($request->has('status')) {
-            $reservations->status = $request->input('status');
-            $reservations->save();
+            $reservation->status = $request->input('status');
+            $reservation->save();
 
-            return redirect()->route('reservations.index')->with('success', 'Reservation status updated to ' . $reservations->status . '!');
+            return redirect()->route('reservations.index')->with('success', 'Reservation status updated to ' . $reservation->status . '!');
         }
 
         return redirect()->route('reservations.index')->with('error', 'No status provided!');
     }
 
-    public function destroy($id)
+    // For 'archiving' reservations
+    public function destroy(Reservations $reservation)
     {
-        $reservations = Reservations::findOrFail($id);
-
-        $reservations->delete();
+        $reservation->delete();
 
         return redirect()->route('reservations.index')->with('success', 'Reservation archived successfully!');
     }
-
 }
