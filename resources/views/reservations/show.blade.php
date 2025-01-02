@@ -34,7 +34,7 @@
     </div>
 
     <!-- Reservation Details Title -->
-    <h2 class="text-4xl font-bold text-center mb-2 mt-4">Reservation Details</h2>
+    <h2 class="text-4xl font-bold text-center mb-1 mt-3">Reservation Details</h2>
 
     <!-- Main Content -->
     <div class="container mx-auto px-6 py-12">
@@ -46,7 +46,7 @@
 
         <!-- Reservation Details Table with Border -->
         <div class="bg-gray-200 p-8 rounded-md shadow-lg border border-gray-300">
-            <!-- Edit Button with adjusted spacing -->
+            <!-- Edit Button -->
             <div class="flex justify-start mt-1 mb-6 px-2">
                 <a href="{{ route('reservations.edit', $reservation->id) }}">
                     <button class="bg-blue-500 text-white py-3 px-5 rounded-lg hover:bg-blue-600 transition duration-300">
