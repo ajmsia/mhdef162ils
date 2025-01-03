@@ -58,13 +58,6 @@
                         Reservations
                     </button>
                 </a>
-
-             <!-- Rooms Button -->
-             <a href="{{ route('userroom.index') }}">
-                    <button class="mt-3 top-6 left-6 bg-white text-black border-gray-800 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300">
-                        View Rooms
-                    </button>
-                </a>
                 </div>
 
                 <!-- Requests Button -->
