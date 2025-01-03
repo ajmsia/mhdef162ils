@@ -22,13 +22,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- View Rooms Button -->
-        <a href="{{ route('userroom.index') }}">
-            <button class="absolute top-4 right-4 bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300 text-sm">
-                View Rooms
-            </button>
-        </a>
     </nav>
 
     <!-- Back Button -->
