@@ -25,7 +25,7 @@
                 <div class="flex">
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center">
-                        <a href="{{ route('dashboard') }}">
+                        <a href="http://mhdef162ils.test">
                             <h1 class="text-white text-2xl font-bold">SLIS ILS</h1>
                         </a>
                     </div>

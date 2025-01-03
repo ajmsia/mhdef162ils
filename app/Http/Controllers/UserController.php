@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function request()
     {
-        return view('user.request'); // Returns the user request view
+       
     }
 
     /**
