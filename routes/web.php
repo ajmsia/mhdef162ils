@@ -7,6 +7,7 @@ use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoomController;
 use App\Http\Controllers\UserReservationController;
+use App\Http\Controllers\RequestController;
 
 // Corrected edit route, only GET should be allowed for viewing the edit form
 Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
@@ -33,6 +34,7 @@ Route::resource('librarian', LibrarianController::class);
 Route::resource('user', UserController::class);
 Route::resource('userroom', UserRoomController::class);
 Route::resource('userreservation', UserReservationController::class);
+Route::resource('requests', RequestController::class);
 
 // Routes for user dashboard (updated to match /user)
 Route::prefix('user')->name('user.')->group(function() {
