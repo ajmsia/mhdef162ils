@@ -68,7 +68,6 @@
                 </a>
 
                 <!-- Consultations Button -->
-                <a href="{{ route('user.consultation') }}">
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
                         Consultations
                     </button>
