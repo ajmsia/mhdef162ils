@@ -38,14 +38,14 @@ Route::resource('userreservation', UserReservationController::class);
 Route::prefix('user')->name('user.')->group(function() {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/reservations/usercreate', [ReservationController::class, 'create'])->name('reservations.usercreate');
-    Route::get('/request', [UserController::class, 'request'])->name('request'); // temporary route for request, change it to the request create view page once it is made
-    Route::get('/consultation', [UserController::class, 'consultation'])->name('consultation'); // temporary route consultation, change it to the consultation create view page once it is made
+    Route::get('/request', [UserController::class, 'request'])->name('request'); // temporary route for user request page, change it to the request create view page once it is made
+    Route::get('/consultation', [UserController::class, 'consultation'])->name('consultation'); // temporary route user consultation page, change it to the consultation create view page once it is made
 });
 
 // Routes for librarian dashboard
 Route::prefix('librarian')->name('librarian.')->group(function() {
     Route::get('/', [LibrarianController::class, 'index'])->name('index');  
     Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
-    Route::get('/request', [LibrarianController::class, 'request'])->name('request'); // temporary route for request, change it to the request create view page once it is made
-    Route::get('/consultation', [LibrarianController::class, 'consultation'])->name('consultation'); // temporary route for consultation, change it to the consultation create view page once it is made
+    Route::get('/request', [LibrarianController::class, 'request'])->name('request'); // temporary route for librarian request page, change it to the request view page once it is made
+    Route::get('/consultation', [LibrarianController::class, 'consultation'])->name('consultation'); // temporary route for librarian consultation page, change it to the consultation view page once it is made
 });
