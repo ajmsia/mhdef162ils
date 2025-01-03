@@ -45,7 +45,7 @@ Route::resource('userreservation', UserReservationController::class);
 Route::prefix('user')->name('user.')->group(function() {
     Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
     Route::get('/reservations/usercreate', [ReservationController::class, 'create'])->name('reservations.usercreate');
-    Route::get('request', [UserController::class, 'request'])->name('request');
+    Route::get('/request', [UserController::class, 'request'])->name('request');
     Route::get('consultation', [UserController::class, 'consultation'])->name('consultation');
 });
 
@@ -57,3 +57,4 @@ Route::prefix('librarian')->name('librarian.')->group(function() {
     Route::get('consultation', [LibrarianController::class, 'consultation'])->name('consultation');
     Route::get('report', [LibrarianController::class, 'report'])->name('report');
 });
+

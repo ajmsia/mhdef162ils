@@ -54,14 +54,14 @@
 
 
                 <!-- Request Button -->
-                <a href="{{ route('librarian.request') }}">
+                <a href="{{ route('') }}">
                     <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
                         Requests
                     </button>
                 </a>
 
                 <!-- Consultation Button -->
-                <a href="{{ route('librarian.consultation') }}">
+                <a href="{{ route('') }}">
                     <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
                         Consultations
                     </button>

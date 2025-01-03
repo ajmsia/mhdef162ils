@@ -17,6 +17,14 @@ class UserController extends Controller
     }
 
     /**
+     * Show the user request page.
+     */
+    public function request()
+    {
+        return view('user.request'); // Returns the user request view
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -64,3 +72,4 @@ class UserController extends Controller
         //
     }
 }
+
