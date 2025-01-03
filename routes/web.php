@@ -14,7 +14,6 @@ Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'e
 // Routes for other pages
 Route::get('/user/rooms', [UserRoomController::class, 'index'])->name('user.rooms.index');
 Route::get('/reservations/user-create', [ReservationController::class, 'usercreate'])->name('reservations.usercreate');
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
 
 // New route for storing reservations
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
@@ -25,13 +24,7 @@ Route::get('/', function () {
 });
 
 // Define routes for user (Patron) and librarian dashboards
-Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.index');
-Route::get('/librarian/dashboard', [LibrarianController::class, 'index'])->name('librarian.index');
-
-// General routes (no login required)
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/librarian', [LibrarianController::class, 'index'])->name('librarian.index'); 
 
 // Resource routes for rooms, reservations, user, and librarian
 Route::resource('rooms', RoomController::class);
@@ -41,20 +34,18 @@ Route::resource('user', UserController::class);
 Route::resource('userroom', UserRoomController::class);
 Route::resource('userreservation', UserReservationController::class);
 
-// Routes for user dashboard
+// Routes for user dashboard (updated to match /user)
 Route::prefix('user')->name('user.')->group(function() {
-    Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/reservations/usercreate', [ReservationController::class, 'create'])->name('reservations.usercreate');
-    Route::get('/request', [UserController::class, 'request'])->name('request');
-    Route::get('consultation', [UserController::class, 'consultation'])->name('consultation');
+    Route::get('/request', [UserController::class, 'request'])->name('request'); // temporary route for user request page, change it to the request create view page once it is made
+    Route::get('/consultation', [UserController::class, 'consultation'])->name('consultation'); // temporary route user consultation page, change it to the consultation create view page once it is made
 });
 
 // Routes for librarian dashboard
 Route::prefix('librarian')->name('librarian.')->group(function() {
-    Route::get('dashboard', [LibrarianController::class, 'index'])->name('dashboard');
-    Route::get('reservation', [LibrarianController::class, 'reservation'])->name('reservation');
-    Route::get('request', [LibrarianController::class, 'request'])->name('request');
-    Route::get('consultation', [LibrarianController::class, 'consultation'])->name('consultation');
-    Route::get('report', [LibrarianController::class, 'report'])->name('report');
+    Route::get('/', [LibrarianController::class, 'index'])->name('index');  
+    Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
+    Route::get('/request', [LibrarianController::class, 'request'])->name('request'); // temporary route for librarian request page, change it to the request view page once it is made
+    Route::get('/consultation', [LibrarianController::class, 'consultation'])->name('consultation'); // temporary route for librarian consultation page, change it to the consultation view page once it is made
 });
-
