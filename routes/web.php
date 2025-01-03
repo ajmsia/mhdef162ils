@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 // Define routes for user (Patron) and librarian dashboards
-Route::get('/librarian', [LibrarianController::class, 'index'])->name('librarian.index'); // Fixed route for /librarian
+Route::get('/librarian', [LibrarianController::class, 'index'])->name('librarian.index'); 
 
 // Resource routes for rooms, reservations, user, and librarian
 Route::resource('rooms', RoomController::class);
@@ -36,17 +36,16 @@ Route::resource('userreservation', UserReservationController::class);
 
 // Routes for user dashboard (updated to match /user)
 Route::prefix('user')->name('user.')->group(function() {
-    Route::get('/', [UserController::class, 'index'])->name('index');  // Corrected to /user route
+    Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/reservations/usercreate', [ReservationController::class, 'create'])->name('reservations.usercreate');
-    Route::get('/request', [UserController::class, 'request'])->name('request');
-    Route::get('/consultation', [UserController::class, 'consultation'])->name('consultation');
+    Route::get('/request', [UserController::class, 'request'])->name('request'); // temporary route for request, change it to the request create view page once it is made
+    Route::get('/consultation', [UserController::class, 'consultation'])->name('consultation'); // temporary route consultation, change it to the consultation create view page once it is made
 });
 
 // Routes for librarian dashboard
 Route::prefix('librarian')->name('librarian.')->group(function() {
-    Route::get('/', [LibrarianController::class, 'index'])->name('index');  // Corrected to /librarian route
+    Route::get('/', [LibrarianController::class, 'index'])->name('index');  
     Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
-    Route::get('/request', [LibrarianController::class, 'request'])->name('request');
-    Route::get('/consultation', [LibrarianController::class, 'consultation'])->name('consultation');
-    Route::get('/report', [LibrarianController::class, 'report'])->name('report');
+    Route::get('/request', [LibrarianController::class, 'request'])->name('request'); // temporary route for request, change it to the request create view page once it is made
+    Route::get('/consultation', [LibrarianController::class, 'consultation'])->name('consultation'); // temporary route for consultation, change it to the consultation create view page once it is made
 });
