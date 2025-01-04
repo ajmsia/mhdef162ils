@@ -12,15 +12,16 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        $requests = Request::get();
+        return view('requests.index', compact('requests'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function usercreate() // for user creation of request
     {
-        //
+        return view('requests.usercreate');
     }
 
     /**
@@ -28,7 +29,7 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // to do for aster: fix the store function
     }
 
     /**
@@ -36,7 +37,7 @@ class RequestController extends Controller
      */
     public function show(requests $requests)
     {
-        //
+        // to do for aster: fix the show function
     }
 
     /**
@@ -44,7 +45,7 @@ class RequestController extends Controller
      */
     public function edit(requests $requests)
     {
-        //
+        // to do for aster: iiyak talaga ako
     }
 
     /**
@@ -52,7 +53,7 @@ class RequestController extends Controller
      */
     public function update(Request $request, requests $requests)
     {
-        //
+        // to do for aster: still thinking about whether to do this
     }
 
     /**
@@ -60,6 +61,6 @@ class RequestController extends Controller
      */
     public function destroy(requests $requests)
     {
-        //
+        // to do for aster: for librarian view
     }
 }
