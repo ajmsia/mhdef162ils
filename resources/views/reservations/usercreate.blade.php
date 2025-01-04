@@ -172,7 +172,8 @@
 
                 <!-- Action Buttons -->
                 <div class="flex justify-center mt-6 gap-4">
-                    <button type="button" onclick="window.location.href='{{ route('user.index') }}';" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">Cancel</button>
+                    <button type="button" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">
+                        <a href="{{ route ('user.index') }}">Cancel</a>
                     <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition duration-300">Add Reservation</button>
                 </div>
 
