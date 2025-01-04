@@ -53,7 +53,7 @@
 
             <!-- View Rooms Button -->
             <a href="{{ route('rooms.index') }}">
-                <button class="mt-3 top-6 left-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
+                <button class="mt-3 top-6 left-6 bg-white text-black border-gray-800 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300">
                     View Rooms
                     </button>
                 </a>
