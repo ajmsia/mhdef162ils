@@ -53,7 +53,7 @@
 
             <!-- View Rooms Button -->
             <a href="{{ route('rooms.index') }}">
-                <button class="mt-3 top-6 left-6 bg-white text-black border-gray-800 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300">
+                <button class="mt-3 top-6 left-6 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
                     View Rooms
                     </button>
                 </a>
@@ -61,14 +61,14 @@
 
 
                 <!-- Request Button -->
-                <a href="{{ route('librarian.request') }}">
+                <a href="{{ route('librarian.request') }}"> <!-- temporary route, it should go to a librarian request view page once it is made (once changed, edit also the route in web.php) -->
                     <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
                         Requests
                     </button>
                 </a>
 
                 <!-- Consultation Button -->
-                <a href="{{ route('librarian.consultation') }}">
+                <a href="{{ route('librarian.consultation') }}"> <!-- temporary route, it should go to a librarian consultation view page once it is made (once changed, edit also the route in web.php) -->
                     <button class="bg-black text-white py-6 px-16 rounded-lg hover:bg-gray-800 transition duration-300 text-xl">
                         Consultations
                     </button>

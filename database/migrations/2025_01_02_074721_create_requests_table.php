@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('requests', function (Blueprint $table) {
-            $table->id();
+            $table->id('requestID');
             $table->timestamps();
             $table->softDeletes();
             $table->string('userFirstName');
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('upmail')->unique();
             $table->string('college');
             $table->string('userType');
-            $table->unsignedBigInteger('requestID');
             $table->date('requestDate');
             $table->time('requestTime');
             $table->text('purpose');

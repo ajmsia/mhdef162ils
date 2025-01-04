@@ -25,7 +25,7 @@
     </nav>
 
     <!-- Back Button -->
-        <div class="flex justify-start mt-8 px-6">
+    <div class="flex justify-start mt-8 px-6">
         <a href="{{ route('user.index') }}">
             <button class="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
                 Back
@@ -33,48 +33,51 @@
         </a>
     </div>
 
+    <!-- Main Content -->
     <main class="container mx-auto px-6 py-12 text-center align-content-center">
         <h2 class="text-4xl font-bold mb-8">Add Request</h2>
 
-    <div class="bg-gray-200 p-8 rounded-md shadow-lg max-w-4xl mx-auto flex items-center justify-center">
-    <form method="POST" action="{{ route('requests.store') }}" enctype="multipart/form-data">
-            @csrf
-    
-        <!-- Resource Details -->
-        <div class="flex flex-col md:flex-row gap-4">
-            <!-- Resource Type -->
-            <div class="mb-4">
-                    <label for="resourceType" class="block text-sm font-medium text-gray-700 mb-3">Resource Type</label>
-                    <select id="resourceType" name="resourceType" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                        <option value="Book">Book</option>
-                        <option value="Electronic Resource">Electronic Resource</option>
-                        <option value="Thesis">Thesis</option>
-                        <option value="Analytics">Analytics</option>
-                        <option value="Article">Article</option>
-                        <option value="Continuing Resource">Continuing Resource</option>
-                        <option value="Visual Material">Visual Material</option>
-                    </select>
-                </div>
-         <!-- Title -->
-            <div class="mb-4">
-                    <label for="title" class="block text-sm font-medium text-gray-700 mb-3">Title</label>
-                    <input id="title" name="title" required class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+        <div class="bg-gray-200 p-8 rounded-md shadow-lg max-w-4xl mx-auto flex items-center justify-center">
+            <form method="POST" action="{{ route('requests.store') }}" enctype="multipart/form-data">
+                @csrf
+
+                <!-- Resource Details -->
+                <div class="flex flex-col md:flex-row gap-4">
+                    <!-- Resource Type -->
+                    <div class="mb-4">
+                        <label for="resourceType" class="block text-sm font-medium text-gray-700 mb-3">Resource Type</label>
+                        <select id="resourceType" name="resourceType" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            <option value="Book">Book</option>
+                            <option value="Electronic Resource">Electronic Resource</option>
+                            <option value="Thesis">Thesis</option>
+                            <option value="Analytics">Analytics</option>
+                            <option value="Article">Article</option>
+                            <option value="Continuing Resource">Continuing Resource</option>
+                            <option value="Visual Material">Visual Material</option>
+                        </select>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="mb-4">
+                        <label for="title" class="block text-sm font-medium text-gray-700 mb-3">Title</label>
+                        <input id="title" name="title" required class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    </div>
                 </div>
 
-            </div>
-         <!-- Tuklas Link -->
-         <div class="mb-4">
+                <!-- Tuklas Link -->
+                <div class="mb-4">
                     <label for="tuklasLink" class="block text-sm font-medium text-gray-700 mb-3">Tuklas Link</label>
                     <input type="url" id="tuklasLink" name="tuklasLink" required class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                 </div>
-        
-         <!-- Action Buttons -->
-         <div class="flex justify-center mt-6 gap-4">
+
+                <!-- Action Buttons -->
+                <div class="flex justify-center mt-6 gap-4">
                     <button type="button" onclick="window.location.href='{{ route('user.index') }}';" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">Cancel</button>
                     <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition duration-300">Add Request</button>
                 </div>
+            </form>
+        </div>
+    </main>
 
-    </form> 
-
-</main>
-    
+</body>
+</html>

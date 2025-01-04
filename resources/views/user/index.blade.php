@@ -58,28 +58,21 @@
                         Reservations
                     </button>
                 </a>
-
-             <!-- Rooms Button -->
-             <a href="{{ route('userroom.index') }}">
-                    <button class="mt-3 top-6 left-6 bg-white text-black border-gray-800 py-2 px-4 rounded-lg hover:bg-gray-200 transition duration-300">
-                        View Rooms
-                    </button>
-                </a>
                 </div>
 
                 <!-- Requests Button -->
-                <a href="{{ route('user.request') }}">
+                <a href="{{ route('user.request') }}"> <!-- temporary route, it should go to a user request create view page once it is made (once changed, edit also the route in web.php) -->
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
                         Requests
                     </button>
                 </a>
 
                 <!-- Consultations Button -->
-                <a href="{{ route('user.consultation') }}">
+                <a href="{{ route('user.consultation') }}"> <!-- temporary route, it should go to a user consultation create view page once it is made (once changed, edit also the route in web.php) -->
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
                         Consultations
                     </button>
-                    </a>
+                </a>
                 </div>
             </div>
         </div>
