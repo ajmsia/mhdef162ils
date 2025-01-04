@@ -1,3 +1,6 @@
-<div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
-</div>
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>TANGINA SA WAKAS NAPAGANA KO NA PUTANGINA LORD SALAMAT</h1>
+</body>
+</html> <!-- goods to edit na! -->
