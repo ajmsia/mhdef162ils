@@ -15,6 +15,7 @@ Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'e
 // Routes for other pages
 Route::get('/user/rooms', [UserRoomController::class, 'index'])->name('user.rooms.index');
 Route::get('/reservations/user-create', [ReservationController::class, 'usercreate'])->name('reservations.usercreate');
+Route::get('/requests/user-create', [RequestController::class, 'usercreate'])->name('requests.usercreate'); // added route for user request create view
 
 // New route for storing reservations
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
@@ -40,7 +41,7 @@ Route::resource('requests', RequestController::class);
 Route::prefix('user')->name('user.')->group(function() {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/reservations/usercreate', [ReservationController::class, 'create'])->name('reservations.usercreate');
-    Route::get('/request', [UserController::class, 'request'])->name('request'); // temporary route for user request page, change it to the request create view page once it is made
+    Route::get('/requests/usercreate', [RequestController::class, 'create'])->name('requests.usercreate'); // update: added the usercreate for requests
     Route::get('/consultation', [UserController::class, 'consultation'])->name('consultation'); // temporary route user consultation page, change it to the consultation create view page once it is made
 });
 
