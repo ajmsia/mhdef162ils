@@ -10,7 +10,7 @@ class requests extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'id', 'userFirstName', 'userLastName', 'userMiddleName', 'upmail', 'college', 'userType', 'requestID', 'requestDate', 'requestTime', 'purpose'
+        'requestID', 'userFirstName', 'userLastName', 'userMiddleName', 'upmail', 'college', 'userType', 'requestID', 'requestDate', 'requestTime', 'purpose'
     ];
 
     protected $casts = [
