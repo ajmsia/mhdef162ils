@@ -12,17 +12,27 @@ class RequestController extends Controller
      */
     public function index()
     {
-        $requests = Request::get();
+        $requests = requests::get();
         return view('requests.index', compact('requests'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function usercreate() // for user creation of request
-    {
-        return view('requests.usercreate');
-    }
+
+     public function create() // For librarian view of reservation form //
+     {
+        $requests = requests::get(); 
+        return view('requests.create', compact('requests'));
+     }
+ 
+     
+     public function usercreate() // For user view of reservation form //
+     {
+        $requests = requests::get(); 
+        return view('requests.usercreate', compact('requests'));
+
+     }
 
     /**
      * Store a newly created resource in storage.

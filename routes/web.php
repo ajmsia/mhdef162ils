@@ -19,7 +19,6 @@ Route::get('/requests/user-create', [RequestController::class, 'usercreate'])->n
 
 // New route for storing
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
-Route::post('/requests', [RequestController::class, 'store'])->name('requests.store');
 
 // Home Page Route
 Route::get('/', function () {
@@ -50,6 +49,6 @@ Route::prefix('user')->name('user.')->group(function() {
 Route::prefix('librarian')->name('librarian.')->group(function() {
     Route::get('/', [LibrarianController::class, 'index'])->name('index');  
     Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
-    Route::get('/request', [RequestController::class, 'requests'])->name('requests');
+    Route::get('/requests', [RequestController::class, 'requests'])->name('requests');
     Route::get('/consultation', [LibrarianController::class, 'consultation'])->name('consultation'); // temporary route for librarian consultation page, change it to the consultation view page once it is made
 });
