@@ -61,7 +61,7 @@
                 </div>
 
                 <!-- Requests Button -->
-                <a href="{{ route('user.request') }}"> <!-- temporary route, it should go to a user request create view page once it is made (once changed, edit also the route in web.php) -->
+                <a href="{{ route('requests.usercreate') }}"> <!-- update: changed the route name for requests. also changed in the web.php -->
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
                         Requests
                     </button>
