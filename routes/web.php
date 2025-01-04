@@ -15,9 +15,11 @@ Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'e
 // Routes for other pages
 Route::get('/user/rooms', [UserRoomController::class, 'index'])->name('user.rooms.index');
 Route::get('/reservations/user-create', [ReservationController::class, 'usercreate'])->name('reservations.usercreate');
+Route::get('/requests/user-create' , [RequestController::class, 'usercreate'])->name('requests.usercreate');
 
-// New route for storing reservations
+// New route for storing
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+Route::post('/requests', [RequestController::class, 'store'])->name('requests.store');
 
 // Home Page Route
 Route::get('/', function () {
@@ -40,14 +42,14 @@ Route::resource('requests', RequestController::class);
 Route::prefix('user')->name('user.')->group(function() {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/reservations/usercreate', [ReservationController::class, 'create'])->name('reservations.usercreate');
-    Route::get('/request', [UserController::class, 'request'])->name('request'); // temporary route for user request page, change it to the request create view page once it is made
-    Route::get('/consultation', [UserController::class, 'consultation'])->name('consultation'); // temporary route user consultation page, change it to the consultation create view page once it is made
+    Route::get('/requests/usercreate', [RequestController::class, 'create'])->name('requests.usercreate');
+    Route::get('/consultation/usercreate', [UserController::class, 'consultation'])->name('consultation'); // temporary route user consultation page, change it to the consultation create view page once it is made
 });
 
 // Routes for librarian dashboard
 Route::prefix('librarian')->name('librarian.')->group(function() {
     Route::get('/', [LibrarianController::class, 'index'])->name('index');  
     Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
-    Route::get('/request', [LibrarianController::class, 'request'])->name('request'); // temporary route for librarian request page, change it to the request view page once it is made
+    Route::get('/request', [RequestController::class, 'requests'])->name('requests');
     Route::get('/consultation', [LibrarianController::class, 'consultation'])->name('consultation'); // temporary route for librarian consultation page, change it to the consultation view page once it is made
 });

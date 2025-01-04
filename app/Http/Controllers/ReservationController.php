@@ -31,7 +31,7 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         // Validate and save the reservation
-        $validatedData = $request->validate([
+        $reservationData = $request->validate([
             'userFirstName' => 'required|string|max:255',
             'userLastName' => 'required|string|max:255',
             'userMiddleName' => 'nullable|string|max:255',
@@ -41,11 +41,11 @@ class ReservationController extends Controller
             'roomID' => 'required|integer',
             'reserveTime' => 'required|string',
             'reserveDate' => 'required|date',
-            'purpose' => 'required|string',
+            'purpose' => 'required|string'
         ]);
 
         // Create the reservation using the validated data
-        Reservations::create($validatedData);
+        Reservations::create($reservationData);
 
         // Redirect to appropriate page with a success message
         return redirect()->route('reservations.usercreate')->with('success', 'Reservation successfully added!');

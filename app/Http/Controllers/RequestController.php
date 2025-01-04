@@ -12,15 +12,15 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        return view('requests.index');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create() // For librarian view of request form //
     {
-        //
+        return view('requests.create');
     }
 
     /**
@@ -28,7 +28,25 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Validate and save the reservation
+         $requestsData = $request->validate([
+            'userFirstName' => 'required|string|max:255',
+            'userLastName' => 'required|string|max:255',
+            'userMiddleName' => 'nullable|string|max:255',
+            'upmail' => 'required|email|max:255',
+            'userType' => 'required|string',
+            'college' => 'required|string',
+            'title' => 'required|string',
+            'resourceType' => 'required|string',
+            'tuklasLink' => 'required|string',
+            'requestDate' => 'required|date',
+        ]);
+
+        // Create the request using the validated data
+        Requests::create($requestsData);
+
+        // Redirect to appropriate page with a success message
+        return redirect()->route('requests.create')->with('success', 'Request successfully submitted!');
     }
 
     /**

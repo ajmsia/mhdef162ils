@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('upmail')->unique();
             $table->string('college');
             $table->string('userType');
+            $table->string('title');
+            $table->string('resourceType');
+            $table->string('tuklasLink');
             $table->date('requestDate');
-            $table->time('requestTime');
-            $table->text('purpose');
-            $table->foreign('requestID')->references('id')->on('requests')->onDelete('cascade');
             $table->string('status')->default('pending');
         });
     }
