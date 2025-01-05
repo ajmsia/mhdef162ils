@@ -55,3 +55,12 @@ Route::prefix('librarian')->name('librarian.')->group(function() {
     Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
     Route::get('/requests', [RequestController::class, 'requests'])->name('requests');
 });
+
+//Edit
+Route::get('/consultations/{id}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
+
+//Update
+Route::put('/consultations/{id}', [ConsultationController::class, 'update'])->name('consultations.update');
+
+//Delete
+Route::delete('/consultations/{id}', [ConsultationController::class, 'destroy'])->name('consultations.destroy');

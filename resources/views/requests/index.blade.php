@@ -63,21 +63,58 @@
                         <th class="py-3 px-6 text-left border-b border-gray-300">Actions</th>
                     </tr>
                 </thead>
-                        @foreach ($requests as $request)
-                        <tr>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->userFirstName }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->userLastName }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->userMiddleName }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->userType }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->title }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->resourceType }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->tuklasLink }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->requestDate }}</td>
-                            <td class="border-2 border-gray-400 px-6 py-4">{{ $request->status }}</td>
-                        </tr>
-                        @endforeach
+                <tbody id="requestsTable">
+                @foreach ($requests as $request)
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 border-r border-gray-300">
+                            <a href="{{ route('requests.show', ['request' => $request->requestID]) }}" class="text-black hover:text-blue-500">
+                                {{ $request->userFirstName }}
+                            </a>
+                        </td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->userLastName }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->userType }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">
+                        </td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ date('M d, Y', strtotime($request->requestDate)) }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->status }}</td>
+                        <td class="py-3 px-6">
+                            <!-- Action Buttons Container with spacing -->
+                            <div class="flex space-x-4">
+                                <a href="{{ route('reservations.edit', ['request' => $request->requestID]) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                                    Edit
+                                </a>
+
+                                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="approved">
+                                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
+                                        Approve
+                                    </button>
+                                </form>
+
+                                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="rejected">
+                                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
+                                        Reject
+                                    </button>
+                                </form>
+
+                                <form action="{{ route('requests.destroy', $request->requestID) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
+                                        Archive
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
-                </table>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
