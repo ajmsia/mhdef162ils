@@ -73,9 +73,9 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(requests $requests)
+    public function edit(Request $requests)
     {
-
+        $requestID = $requests->route('requestID');
         $request = Requests::findOrFail($requestID);
     
          return view('requests.edit', compact('request'));
@@ -112,9 +112,8 @@ class RequestController extends Controller
      */
     public function destroy(Requests $request)
     {
-        $request = Requests::findOrFail($requestID);
         $request->delete();
 
-        return redirect()->route('requests.index')->with('success', 'Request deleted successfully!');
+        return redirect()->route('requests.index')->with('success', 'Request archived successfully!');
     }
 }

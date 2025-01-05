@@ -73,3 +73,4 @@ Route::put('/requests/{request}', [RequestController::class, 'update'])->name('r
 
 //Delete
 Route::delete('/consultations/{id}', [ConsultationController::class, 'destroy'])->name('consultations.destroy');
+Route::delete('/requests/{request}', [RequestController::class, 'destroy'])->name('requests.destroy');
