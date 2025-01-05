@@ -65,7 +65,7 @@ class RequestController extends Controller
      */
     public function show(Requests $request) 
     {
-        $rooms = Rooms::all();
+        $requests = requests::all();
         return view('requests.show', compact('request'));
     }
 
