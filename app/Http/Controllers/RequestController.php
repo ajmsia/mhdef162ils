@@ -40,7 +40,7 @@ class RequestController extends Controller
     public function store(Request $request)
     {
          // Validate and save the reservation
-         $requestsData = $request->validate([
+         $validatedData = $request->validate([
             'userFirstName' => 'required|string|max:255',
             'userLastName' => 'required|string|max:255',
             'userMiddleName' => 'nullable|string|max:255',
@@ -55,25 +55,32 @@ class RequestController extends Controller
         ]);
 
         // Create the request using the validated data
-        Requests::create($requestsData);
+        $requestsData = Requests::create($validatedData);
 
         // Redirect to appropriate page with a success message
-        return redirect()->route('requests.usershow')->with('success', 'Request successfully submitted!');
+        return redirect()->route('user.requests.usershow', ['requests' => $requestsData->requestID])->with('success', 'Request successfully added!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($requestID) 
+    
+     public function show(Request $request, $requestID) 
+     {
+         $request = Requests::findOrFail($requestID);
+         return view('requests.show', compact('request'));
+     }
+
+     public function usershow(Request $request, $requestID) 
     {
         $request = Requests::findOrFail($requestID);
-        return view('requests.show', compact('request'));
+        return view('requests.usershow', compact('request'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $requests)
+    public function edit(Request $request, $requestID)
     {
         $requestID = $requests->route('requestID');
         $request = Requests::findOrFail($requestID);
