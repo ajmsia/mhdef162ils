@@ -24,6 +24,7 @@ class ConsultationController extends Controller
     {
         $validatedData = $request->validate([
             'fullname' => 'required|string|max:100',
+            'nickname' => 'required|string|max:100',
             'mail' => 'required|email',
             'contact' => 'required|numeric',
             'reserveDate' => 'required|date',

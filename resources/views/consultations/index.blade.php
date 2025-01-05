@@ -38,10 +38,12 @@
     <div class="container mx-auto px-6 py-12">
         <!-- Consultations Table -->
         <div class="bg-gray-200 p-8 rounded-md shadow-lg">
+        <div class="overflow-x-auto">
             <table class="min-w-full bg-white border-separate border-spacing-0">
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Full Name</th>
+                        <th class="py-3 px-6 text-left border-b border-r border-gray-300">Nickname</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Email</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Contact</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Reserve Date</th>
@@ -54,6 +56,7 @@
                     @forelse ($consultations as $consultation)
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->fullname }}</td>
+                            <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->nickname }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->mail }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->contact ?? 'N/A' }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->reserveDate }}</td>
@@ -70,11 +73,12 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center py-4">No consultations found.</td>
+                            <td colspan="7" class="text-center py-4">No consultations scheduled.</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
+            </div>
         </div>
 
         <!-- Pagination Links -->

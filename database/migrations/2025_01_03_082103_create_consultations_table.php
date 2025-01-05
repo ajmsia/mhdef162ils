@@ -15,6 +15,7 @@ return new class extends Migration
             Schema::create('consultations', function (Blueprint $table) {
                 $table->id();
                 $table->string('fullname');
+                $table->string('nickname');
                 $table->string('mail');
                 $table->string('contact')->nullable();
                 $table->date('reserveDate');

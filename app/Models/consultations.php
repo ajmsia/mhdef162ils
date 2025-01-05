@@ -11,6 +11,7 @@ class consultations extends Model
 
     protected $fillable = [
         'fullname', 
+        'nickname',
         'mail', 
         'contact', 
         'reserveDate', 

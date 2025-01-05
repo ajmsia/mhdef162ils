@@ -62,6 +62,11 @@
                         </div>
 
                         <div>
+                            <label for="nickname" class="block text-lg font-medium text-gray-700 mb-3">Nickname</label>
+                            <input type="text" name="nickname" id="nickname" class="w-full border-gray-300 border p-4 rounded-lg" required>
+                        </div>
+
+                        <div>
                             <label for="mail" class="block text-lg font-medium text-gray-700 mb-3">Email Address</label>
                             <input type="email" name="mail" id="mail" class="w-full border-gray-300 border p-4 rounded-lg" required>
                         </div>
