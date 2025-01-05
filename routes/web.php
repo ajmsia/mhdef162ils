@@ -12,6 +12,7 @@ use App\Http\Controllers\ConsultationController;
 
 // Corrected edit route, only GET should be allowed for viewing the edit form
 Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
+Route::get('/requests/{requestID}/edit', [ReservationController::class, 'edit'])->name('requests.edit');
 
 // Routes for other pages
 Route::get('/user/rooms', [UserRoomController::class, 'index'])->name('user.rooms.index');
@@ -21,6 +22,7 @@ Route::get('/consultations/user-create', [ConsultationController::class, 'usercr
 
 // New route for storing
 Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+Route::post('/requests', [RequestController::class, 'store'])->name('requests.store');
 Route::post('/consultations', [ConsultationController::class, 'store'])->name('consultations.store'); 
 
 // Home Page Route
