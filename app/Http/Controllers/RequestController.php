@@ -51,6 +51,7 @@ class RequestController extends Controller
             'resourceType' => 'required|string',
             'tuklasLink' => 'required|string',
             'requestDate' => 'required|date',
+            'requestTime' => 'required|time',
         ]);
 
         // Create the request using the validated data
@@ -83,10 +84,28 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, requests $requests)
+    public function update(Request $request, Requests $request)
     {
-        // to do for aster: still thinking about whether to do this
+        // Validate the input data
+        $validatedData = $request->validate([
+            'userFirstName' => 'required|string|max:255',
+            'userLastName' => 'required|string|max:255',
+            'userMiddleName' => 'nullable|string|max:255',
+            'upmail' => 'required|email|max:255',
+            'userType' => 'required|string',
+            'college' => 'required|string',
+            'title' => 'required|string',
+            'resourceType' => 'required|string',
+            'tuklasLink' => 'required|string',
+            'requestDate' => 'required|date',
+        ]);
+
+        // Update the reservation with new data
+        $request->update($validatedData);
+
+        return redirect()->route('request.index')->with('success', 'Request updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
