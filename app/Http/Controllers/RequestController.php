@@ -56,7 +56,7 @@ class RequestController extends Controller
         // Create the request using the validated data
         $requestsData = Requests::create($validatedData);
 
-        return redirect()->route('user.requests.usershow', $requestsData->requestID);
+        return redirect()->route('user.requests.usershow', $requestsData->requestID)->with('success', 'Request successfully submitted!');
 
     }
 
