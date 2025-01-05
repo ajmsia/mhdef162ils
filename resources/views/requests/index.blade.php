@@ -80,7 +80,7 @@
                         <td class="py-3 px-6">
                             <!-- Action Buttons Container with spacing -->
                             <div class="flex space-x-4">
-                                <a href="{{ route('reservations.edit', ['request' => $request->requestID]) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                                <a href="{{ route('requests.edit', ['request' => $request->requestID]) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
                                     Edit
                                 </a>
 
