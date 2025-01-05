@@ -57,15 +57,16 @@ class RequestController extends Controller
         Requests::create($requestsData);
 
         // Redirect to appropriate page with a success message
-        return redirect()->route('requests.create')->with('success', 'Request successfully submitted!');
+        return redirect()->route('requests.usercreate')->with('success', 'Request successfully submitted!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(requests $requests)
+    public function show(Requests $request) 
     {
-        // to do for aster: fix the show function
+        $rooms = Rooms::all();
+        return view('requests.show', compact('request'));
     }
 
     /**
