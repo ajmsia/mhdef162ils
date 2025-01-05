@@ -58,24 +58,25 @@ class RequestController extends Controller
         $requestsData = Requests::create($validatedData);
 
         // Redirect to appropriate page with a success message
-        return redirect()->route('user.requests.usershow', ['requests' => $requestsData->requestID])->with('success', 'Request successfully added!');
+        return redirect()->route('user.requests.usershow', $requestsData->requestID)->with('success', 'Request successfully submitted!');
     }
 
     /**
      * Display the specified resource.
      */
     
-     public function show(Request $request, $requestID) 
-     {
-         $request = Requests::findOrFail($requestID);
-         return view('requests.show', compact('request'));
-     }
-
-     public function usershow(Request $request, $requestID) 
+    public function show($requestID) 
     {
         $request = Requests::findOrFail($requestID);
-        return view('requests.usershow', compact('request'));
+        return view('requests.show', compact('request'));
     }
+
+    public function usershow($requestID) 
+    {
+    $request = Requests::findOrFail($requestID);
+    return view('requests.usershow', compact('request'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -123,4 +124,5 @@ class RequestController extends Controller
 
         return redirect()->route('requests.index')->with('success', 'Request archived successfully!');
     }
+
 }
