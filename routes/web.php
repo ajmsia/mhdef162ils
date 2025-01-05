@@ -69,7 +69,7 @@ Route::get('/requests/{requestID}/edit', [RequestController::class, 'edit'])->na
 
 //Update
 Route::put('/consultations/{id}', [ConsultationController::class, 'update'])->name('consultations.update');
-Route::put('/requests/{requestID}', [RequestController::class, 'update'])->name('requests.update');
+Route::put('/requests/{request}', [RequestController::class, 'update'])->name('requests.update');
 
 //Delete
 Route::delete('/consultations/{id}', [ConsultationController::class, 'destroy'])->name('consultations.destroy');
