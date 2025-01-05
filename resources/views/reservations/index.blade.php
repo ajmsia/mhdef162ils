@@ -59,6 +59,7 @@
         @endif
 
         <!-- Reservations Table -->
+        <div class="overflow-x-auto">
         <div class="bg-gray-200 p-8 rounded-md shadow-lg">
             <table class="min-w-full bg-white border-separate border-spacing-0">
                 <thead>
@@ -131,6 +132,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         </div>
     </div>
 

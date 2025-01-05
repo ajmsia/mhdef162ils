@@ -48,12 +48,12 @@
     <div class="container mx-auto px-6 py-12">
         <!-- Requests Table -->
         <div class="bg-gray-200 p-8 rounded-md shadow-lg">
+        <div class="overflow-x-auto">
             <table class="min-w-full bg-white border-separate border-spacing-0">
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">First Name</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Last Name</th>
-                        <th class="py-3 px-6 text-left border-b border-r border-gray-300">Middle Name</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">User Type</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Title</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Resource Type</th>
@@ -73,8 +73,9 @@
                         </td>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $request->userLastName }}</td>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $request->userType }}</td>
-                        <td class="py-3 px-6 border-r border-gray-300">
-                        </td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->title }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->resourceType }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->tuklasLink }}</td>
                         <td class="py-3 px-6 border-r border-gray-300">{{ date('M d, Y', strtotime($request->requestDate)) }}</td>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $request->status }}</td>
                         <td class="py-3 px-6">
@@ -115,6 +116,7 @@
                 @endforeach
                 </tbody>
             </table>
+        </div>
         </div>
     </div>
 
