@@ -68,34 +68,28 @@
                         <th class="py-3 px-6 text-left border-b border-gray-300">Actions</th>
                     </tr>
                 </thead>
-                <tbody id="reservationsTable">
-                    @foreach($requests as $request)
+                <tbody id="requestsTable">
+                @foreach ($requests as $request)
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
                         <td class="py-3 px-6 border-r border-gray-300">
-                            <a href="{{ route('reservations.show', ['reservation' => $reservation->id]) }}" class="text-black hover:text-blue-500">
-                                {{ $requests->userFirstName }}
+                            <a href="{{ route('requests.show', ['request' => $request->requestID]) }}" class="text-black hover:text-blue-500">
+                                {{ $request->userFirstName }}
                             </a>
                         </td>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->userLastName }}</td>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->userType }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->userLastName }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->userType }}</td>
                         <td class="py-3 px-6 border-r border-gray-300">
-                            @foreach($rooms as $room)
-                                @if($room->id == $reservation->roomID)
-                                    {{ $room->roomName }}
-                                @endif
-                            @endforeach
                         </td>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ date('M d, Y', strtotime($reservation->reserveDate)) }}</td>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ date('h:i A', strtotime($reservation->reserveTime)) }}</td>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $reservation->status }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ date('M d, Y', strtotime($request->requestDate)) }}</td>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->status }}</td>
                         <td class="py-3 px-6">
                             <!-- Action Buttons Container with spacing -->
                             <div class="flex space-x-4">
-                                <a href="{{ route('reservations.edit', ['reservation' => $reservation->id]) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                                <a href="{{ route('reservations.edit', ['request' => $request->requestID]) }}" class="px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
                                     Edit
                                 </a>
 
-                                <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="status" value="approved">
@@ -104,7 +98,7 @@
                                     </button>
                                 </form>
 
-                                <form action="{{ route('reservations.update', ['reservation' => $reservation->id]) }}" method="POST" class="inline-block">
+                                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="status" value="rejected">
@@ -113,7 +107,7 @@
                                     </button>
                                 </form>
 
-                                <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" class="inline-block">
+                                <form action="{{ route('requests.destroy', $request->requestID) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
@@ -123,7 +117,7 @@
                             </div>
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
                 </tbody>
             </table>
         </div>

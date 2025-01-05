@@ -63,9 +63,9 @@ class RequestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Requests $request) 
+    public function show($requestID) 
     {
-        $rooms = Rooms::all();
+        $request = Requests::findOrFail($requestID);
         return view('requests.show', compact('request'));
     }
 
