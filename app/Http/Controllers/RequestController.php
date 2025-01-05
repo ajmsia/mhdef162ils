@@ -65,7 +65,7 @@ class RequestController extends Controller
      */
     public function show(Requests $request) 
     {
-        $requests = requests::all();
+        $requests = requests::findOrFail($request->requestID);
         return view('requests.show', compact('request'));
     }
 
