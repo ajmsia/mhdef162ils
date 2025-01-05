@@ -51,7 +51,7 @@ Route::prefix('user')->name('user.')->group(function() {
     Route::get('/consultations/usercreate', [ConsultationController::class, 'create'])->name('consultations.usercreate'); 
     
     Route::get('/requests/{request}/user-show', [RequestController::class, 'usershow'])->name('requests.usershow');
-
+    Route::get('/reservations/{reservation}/user-show', [ReservationController::class, 'usershow'])->name('reservations.usershow');
 
 });
 

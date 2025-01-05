@@ -58,7 +58,7 @@ class RequestController extends Controller
         Requests::create($requestsData);
 
         // Redirect to appropriate page with a success message
-        return redirect()->route('requests.usercreate')->with('success', 'Request successfully submitted!');
+        return redirect()->route('requests.usershow')->with('success', 'Request successfully submitted!');
     }
 
     /**

@@ -48,7 +48,7 @@ class ReservationController extends Controller
         Reservations::create($reservationData);
 
         // Redirect to appropriate page with a success message
-        return redirect()->route('reservations.usercreate')->with('success', 'Reservation successfully added!');
+        return redirect()->route('user.reservations.usershow')->with('success', 'Reservation successfully added!');
     }
 
     // Corrected show method with route model binding
@@ -56,6 +56,12 @@ class ReservationController extends Controller
     {
         $rooms = Rooms::all();
         return view('reservations.show', compact('reservation', 'rooms'));
+    }
+
+    public function usershow(Reservations $reservation) 
+    {
+        $rooms = Rooms::all();
+        return view('reservations.usershow', compact('reservation', 'rooms'));
     }
 
     // Implement the edit function for updating reservation details
@@ -87,7 +93,8 @@ class ReservationController extends Controller
         // Update the reservation with new data
         $reservation->update($validatedData);
 
-        return redirect()->route('reservations.index')->with('success', 'Reservation updated successfully!');
+        return redirect()->route('user.reservations.usershow', ['reservation' => $reservation->id])->with('success', 'Request successfully submitted!');
+
     }
 
     // For the status/action buttons
