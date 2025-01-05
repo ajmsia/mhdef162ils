@@ -16,7 +16,8 @@ class consultations extends Model
         'contact', 
         'reserveDate', 
         'reserveTime', 
-        'purpose', 
+        'purpose',
+        'status'
     ];
 
     protected $casts = [

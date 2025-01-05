@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->date('reserveDate');
                 $table->time('reserveTime');
                 $table->text('purpose');
+                $table->string('status')->default('pending');
                 $table->timestamps();
                 $table->softDeletes();
             });

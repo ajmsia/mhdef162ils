@@ -52,6 +52,7 @@ Route::prefix('user')->name('user.')->group(function() {
     
     Route::get('/requests/{request}/user-show', [RequestController::class, 'usershow'])->name('requests.usershow');
     Route::get('/reservations/{reservation}/user-show', [ReservationController::class, 'usershow'])->name('reservations.usershow');
+    Route::get('/consultations/{consultation}/user-show', [ConsultationController::class, 'usershow'])->name('consultations.usershow');
 
 });
 
@@ -64,13 +65,13 @@ Route::prefix('librarian')->name('librarian.')->group(function() {
 });
 
 //Edit
-Route::get('/consultations/{id}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
+Route::get('/consultations/{consultation}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
 Route::get('/requests/{requestID}/edit', [RequestController::class, 'edit'])->name('requests.edit');
 
 //Update
-Route::put('/consultations/{id}', [ConsultationController::class, 'update'])->name('consultations.update');
+Route::put('/consultations/{consultation}', [ConsultationController::class, 'update'])->name('consultations.update');
 Route::put('/requests/{request}', [RequestController::class, 'update'])->name('requests.update');
 
 //Delete
-Route::delete('/consultations/{id}', [ConsultationController::class, 'destroy'])->name('consultations.destroy');
+Route::delete('/consultations/{consultation}', [ConsultationController::class, 'destroy'])->name('consultations.destroy');
 Route::delete('/requests/{request}', [RequestController::class, 'destroy'])->name('requests.destroy');

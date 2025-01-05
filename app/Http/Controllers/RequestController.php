@@ -80,7 +80,7 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, $requestID)
+    public function edit(Request $request, Requests $requests, $requestID)
     {
         $requestID = $requests->route('requestID');
         $request = Requests::findOrFail($requestID);
@@ -113,6 +113,17 @@ class RequestController extends Controller
         return redirect()->route('request.index')->with('success', 'Request updated successfully!');
     }
 
+    public function updateStatus(Request $request, Requests $requests)
+    {
+        if ($requests->has('status')) {
+            $requests->status = $request->input('status');
+            $requests->save();
+
+            return redirect()->route('reservations.index')->with('success', 'Reservation status updated to ' . $requests->status . '!');
+        }
+
+        return redirect()->route('requests.index')->with('error', 'No status provided!');
+    }
 
     /**
      * Remove the specified resource from storage.
