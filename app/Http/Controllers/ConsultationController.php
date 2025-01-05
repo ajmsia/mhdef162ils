@@ -53,7 +53,13 @@ class ConsultationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $consultation = Consultations::findOrFail($id);
+
+        // Format reserveDate and reserveTime for the form
+        $consultation->reserveDate = Carbon::parse($consultation->reserveDate)->format('Y-m-d');
+        $consultation->reserveTime = Carbon::parse($consultation->reserveTime)->format('H:i');
+
+        return view('consultations.edit', compact('consultation'));
     }
 
     /**
@@ -61,14 +67,34 @@ class ConsultationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'fullname' => 'required|string|max:100',
+            'mail' => 'required|email',
+            'contact' => 'required|numeric',
+            'reserveDate' => 'required|date', // Ensure date validation
+            'reserveTime' => ['required', new TimeFormat], // Custom validation for time
+            'purpose' => 'required|string',
+        ]);
+    
+        // Format the reserveDate and reserveTime for saving
+        $validatedData['reserveDate'] = Carbon::parse($validatedData['reserveDate'])->format('Y-m-d');
+        $validatedData['reserveTime'] = Carbon::parse($validatedData['reserveTime'])->format('H:i');
+    
+        $consultation = Consultations::findOrFail($id);
+        $consultation->update($validatedData);
+    
+        return redirect()->route('consultations.index')->with('success', 'Consultation updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $consultation = Consultations::findOrFail($id);
+        $consultation->delete();
+
+        return redirect()->route('consultations.index')->with('success', 'Consultation deleted successfully!');
     }
 }
