@@ -12,7 +12,7 @@ use App\Http\Controllers\ConsultationController;
 
 // Corrected edit route, only GET should be allowed for viewing the edit form
 Route::get('/reservations/{reservation}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
-Route::get('/requests/{requestID}/edit', [ReservationController::class, 'edit'])->name('requests.edit');
+Route::get('/requests/{requestID}/edit', [RequestController::class, 'edit'])->name('requests.edit');
 
 // Routes for other pages
 Route::get('/user/rooms', [UserRoomController::class, 'index'])->name('user.rooms.index');
@@ -60,6 +60,7 @@ Route::prefix('librarian')->name('librarian.')->group(function() {
 
 //Edit
 Route::get('/consultations/{id}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
+Route::get('/requests/{requestID}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
 
 //Update
 Route::put('/consultations/{id}', [ConsultationController::class, 'update'])->name('consultations.update');
