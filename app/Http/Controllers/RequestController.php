@@ -50,8 +50,7 @@ class RequestController extends Controller
             'title' => 'required|string',
             'resourceType' => 'required|string',
             'tuklasLink' => 'required|string',
-            'requestDate' => 'required|date',
-            'requestTime' => 'required|time',
+            'requestDate' => 'required|date'
         ]);
 
         // Create the request using the validated data

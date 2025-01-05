@@ -107,6 +107,11 @@
                 </div>
              </div>
                     
+                    <!-- Purpose -->
+                <div class="mb-4">
+                    <label for="purpose" class="block text-sm font-medium text-gray-700 mb-3">Purpose</label>
+                    <textarea id="purpose" name="purpose" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                </div>
 
                     <!-- Submit Button -->
                     <div class="col-span-2 text-center">
