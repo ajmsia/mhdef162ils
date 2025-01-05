@@ -40,7 +40,54 @@ class RequestController extends Controller
     public function store(Request $request)
     {
          // Validate and save the reservation
-         $validatedData = $request->validate([
+         $requestsData = $request->validate([
+            'userFirstName' => 'required|string|max:255',
+            'userLastName' => 'required|string|max:255',
+            'userMiddleName' => 'nullable|string|max:255',
+            'upmail' => 'required|email|max:255',
+            'userType' => 'required|string',
+            'college' => 'required|string',
+            'title' => 'required|string',
+            'resourceType' => 'required|string',
+            'tuklasLink' => 'required|string',
+            'requestDate' => 'required|date',
+            'requestTime' => 'required|time',
+        ]);
+
+        // Create the request using the validated data
+        Requests::create($requestsData);
+
+        // Redirect to appropriate page with a success message
+        return redirect()->route('requests.usercreate')->with('success', 'Request successfully submitted!');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($requestID) 
+    {
+        $request = Requests::findOrFail($requestID);
+        return view('requests.show', compact('request'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(requests $requests)
+    {
+
+        $request = Requests::findOrFail($RequestID);
+    
+         return view('requests.edit', compact('request'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Requests $request)
+    {
+        // Validate the input data
+        $validatedData = $request->validate([
             'userFirstName' => 'required|string|max:255',
             'userLastName' => 'required|string|max:255',
             'userMiddleName' => 'nullable|string|max:255',
@@ -53,44 +100,12 @@ class RequestController extends Controller
             'requestDate' => 'required|date',
         ]);
 
-        // Create the request using the validated data
-        $requestsData = Requests::create($validatedData);
+        // Update the reservation with new data
+        $request->update($validatedData);
 
-        return redirect()->route('user.requests.usershow', $requestsData->requestID)->with('success', 'Request successfully submitted!');
-
+        return redirect()->route('request.index')->with('success', 'Request updated successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($requestID) 
-    {
-        $request = Requests::findOrFail($requestID);
-        return view('requests.show', compact('request'));
-    }
-    
-    public function usershow($requestID) 
-    {
-        $request = Requests::findOrFail($requestID); 
-        return view('requests.usershow', compact('request'));
-    }
-    
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(requests $requests)
-    {
-        // to do for aster: iiyak talaga ako
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, requests $requests)
-    {
-        // to do for aster: still thinking about whether to do this
-    }
 
     /**
      * Remove the specified resource from storage.
