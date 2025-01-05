@@ -112,9 +112,8 @@ class RequestController extends Controller
      */
     public function destroy(Requests $request)
     {
-        $request = Requests::findOrFail($requestID);
         $request->delete();
 
-        return redirect()->route('requests.index')->with('success', 'Request deleted successfully!');
+        return redirect()->route('requests.index')->with('success', 'Request archived successfully!');
     }
 }
