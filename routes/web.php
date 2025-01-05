@@ -49,6 +49,10 @@ Route::prefix('user')->name('user.')->group(function() {
     Route::get('/reservations/usercreate', [ReservationController::class, 'create'])->name('reservations.usercreate');
     Route::get('/requests/usercreate', [RequestController::class, 'create'])->name('requests.usercreate'); // update: added the usercreate for requests
     Route::get('/consultations/usercreate', [ConsultationController::class, 'create'])->name('consultations.usercreate'); 
+    
+    Route::get('/requests/{request}/user-show', [RequestController::class, 'usershow'])->name('requests.usershow');
+
+
 });
 
 // Routes for librarian dashboard
@@ -56,6 +60,7 @@ Route::prefix('librarian')->name('librarian.')->group(function() {
     Route::get('/', [LibrarianController::class, 'index'])->name('index');  
     Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
     Route::get('/requests', [RequestController::class, 'requests'])->name('requests');
+    
 });
 
 //Edit

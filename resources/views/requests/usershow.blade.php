@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Requests Show</title>
+    <title>Requests User Show</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white font-sans">
@@ -95,33 +95,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <div class="mt-8 text-center space-x-4">
-                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
-                    @csrf
-                    @method('PATCH')
-                    <input type="hidden" name="status" value="approved">
-                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
-                        Approve
-                    </button>
-                </form>
-
-                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
-                    @csrf
-                    @method('PATCH')
-                    <input type="hidden" name="status" value="rejected">
-                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
-                        Reject
-                    </button>
-                </form>
-
-                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
-                        Archive
-                    </button>
-                </form>
             </div>
         </div>
     </div>

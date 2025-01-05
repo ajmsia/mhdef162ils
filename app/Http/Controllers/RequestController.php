@@ -40,7 +40,7 @@ class RequestController extends Controller
     public function store(Request $request)
     {
          // Validate and save the reservation
-         $requestsData = $request->validate([
+         $validatedData = $request->validate([
             'userFirstName' => 'required|string|max:255',
             'userLastName' => 'required|string|max:255',
             'userMiddleName' => 'nullable|string|max:255',
@@ -54,10 +54,10 @@ class RequestController extends Controller
         ]);
 
         // Create the request using the validated data
-        Requests::create($requestsData);
+        $requestsData = Requests::create($validatedData);
 
-        // Redirect to appropriate page with a success message
-        return redirect()->route('requests.usercreate')->with('success', 'Request successfully submitted!');
+        return redirect()->route('user.requests.usershow', $requestsData->requestID);
+
     }
 
     /**
@@ -68,6 +68,13 @@ class RequestController extends Controller
         $request = Requests::findOrFail($requestID);
         return view('requests.show', compact('request'));
     }
+    
+    public function usershow($requestID) 
+    {
+        $request = Requests::findOrFail($requestID); 
+        return view('requests.usershow', compact('request'));
+    }
+    
 
     /**
      * Show the form for editing the specified resource.
