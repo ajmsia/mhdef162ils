@@ -40,7 +40,6 @@ Route::resource('user', UserController::class);
 Route::resource('userroom', UserRoomController::class);
 Route::resource('userreservation', UserReservationController::class);
 Route::resource('requests', RequestController::class);
-Route::get('/consultations/{id}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
 
 // Routes for user dashboard (updated to match /user)
 Route::prefix('user')->name('user.')->group(function() {
@@ -56,6 +55,9 @@ Route::prefix('librarian')->name('librarian.')->group(function() {
     Route::get('/reservation', [LibrarianController::class, 'reservation'])->name('reservation');
     Route::get('/requests', [RequestController::class, 'requests'])->name('requests');
 });
+
+//Edit
+Route::get('/consultations/{id}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
 
 //Update
 Route::put('/consultations/{id}', [ConsultationController::class, 'update'])->name('consultations.update');
