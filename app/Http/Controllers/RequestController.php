@@ -84,7 +84,7 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Requests $request)
+    public function update(Request $request, Requests $requests)
     {
         // Validate the input data
         $validatedData = $request->validate([
