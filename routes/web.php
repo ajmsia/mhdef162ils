@@ -65,10 +65,11 @@ Route::prefix('librarian')->name('librarian.')->group(function() {
 
 //Edit
 Route::get('/consultations/{id}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
-Route::get('/requests/{requestID}/edit', [ConsultationController::class, 'edit'])->name('consultations.edit');
+Route::get('/requests/{requestID}/edit', [RequestController::class, 'edit'])->name('requests.edit');
 
 //Update
 Route::put('/consultations/{id}', [ConsultationController::class, 'update'])->name('consultations.update');
+Route::put('/requests/{requestID}', [RequestController::class, 'update'])->name('requets.update');
 
 //Delete
 Route::delete('/consultations/{id}', [ConsultationController::class, 'destroy'])->name('consultations.destroy');
