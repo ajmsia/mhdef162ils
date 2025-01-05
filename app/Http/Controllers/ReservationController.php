@@ -45,10 +45,12 @@ class ReservationController extends Controller
         ]);
 
         // Create the reservation using the validated data
-        Reservations::create($reservationData);
+        $reservation = Reservations::create($reservationData);
 
-        // Redirect to appropriate page with a success message
-        return redirect()->route('user.reservations.usershow')->with('success', 'Reservation successfully added!');
+        // Redirect with a success message
+        return redirect()->route('user.reservations.usershow', ['reservation' => $reservation->id])->with('success', 'Reservation successfully added!');
+
+
     }
 
     // Corrected show method with route model binding
