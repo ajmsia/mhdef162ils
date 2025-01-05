@@ -76,7 +76,7 @@ class RequestController extends Controller
     public function edit(requests $requests)
     {
 
-        $request = Requests::findOrFail($RequestID);
+        $request = Requests::findOrFail($requestID);
     
          return view('requests.edit', compact('request'));
     }
@@ -110,8 +110,11 @@ class RequestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(requests $requests)
+    public function destroy(Requests $request)
     {
-        // to do for aster: for librarian view
+        $request = Requests::findOrFail($requestID);
+        $request->delete();
+
+        return redirect()->route('requests.index')->with('success', 'Request deleted successfully!');
     }
 }
