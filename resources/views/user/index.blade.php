@@ -68,7 +68,7 @@
                 </a>
 
                 <!-- Consultations Button -->
-                <a href="{{ route('user.consultation') }}"> <!-- temporary route, it should go to a user consultation create view page once it is made (once changed, edit also the route in web.php) -->
+                <a href="{{ route('consultations.usercreate') }}"> <!-- temporary route, it should go to a user consultation create view page once it is made (once changed, edit also the route in web.php) -->
                     <button class="bg-black text-white py-6 px-12 rounded-lg hover:bg-gray-800 transition duration-300 text-lg">
                         Consultations
                     </button>
