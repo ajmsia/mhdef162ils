@@ -34,10 +34,10 @@
     </div>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12 text-center">
+    <main class="container mx-auto px-6 py-12 text-center align-content-center">
         <h2 class="text-4xl font-bold mb-8">Edit Request</h2>
 
-        <div class="bg-gray-200 p-8 rounded-md shadow-lg max-w-4xl mx-auto">
+        <div class="bg-gray-200 p-8 rounded-md shadow-lg max-w-4xl mx-auto flex items-center justify-center">
 
             @if(session('success'))
                 <div class="alert alert-success">
