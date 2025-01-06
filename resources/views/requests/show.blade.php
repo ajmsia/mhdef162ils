@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Requests Show</title>
+    <title>Request Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white font-sans">
@@ -33,7 +33,7 @@
         </a>
     </div>
 
-    <!-- Reservation Details Title -->
+    <!-- Request Details Title -->
     <h2 class="text-4xl font-bold text-center mb-1 mt-3">Request Details</h2>
 
     <!-- Main Content -->
@@ -61,61 +61,69 @@
                         <td class="py-3 px-6 border-r border-gray-300">{{ $request->userFirstName }}</td>
                     </tr>
                     <tr class="border-b border-gray-300">
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Last Name</th>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->userLastName }}</td>
-                    </tr>
-                    <tr class="border-b border-gray-300">
                         <th class="py-3 px-6 text-left border-r border-gray-300">Middle Name</th>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $request->userMiddleName ?? 'N/A' }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Last Name</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->userLastName }}</td>
                     </tr>
                     <tr class="border-b border-gray-300">
                         <th class="py-3 px-6 text-left border-r border-gray-300">Email Address</th>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $request->upmail }}</td>
                     </tr>
                     <tr class="border-b border-gray-300">
-                        <th class="py-3 px-6 text-left border-r border-gray-300">College</th>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->college }}</td>
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Request Date</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->requestDate }}</td>
                     </tr>
                     <tr class="border-b border-gray-300">
                         <th class="py-3 px-6 text-left border-r border-gray-300">User Type</th>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $request->userType }}</td>
                     </tr>
-
                     <tr class="border-b border-gray-300">
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Request Date</th>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ date('M d, Y', strtotime($request->requestDate)) }}</td>
+                        <th class="py-3 px-6 text-left border-r border-gray-300">College</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->college }}</td>
                     </tr>
                     <tr class="border-b border-gray-300">
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Purpose</th>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->purpose }}</td>
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Title</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->title }}</td>
                     </tr>
                     <tr class="border-b border-gray-300">
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Status</th>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->status }}</td>
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Resource Type</th>
+                        <td class="py-3 px-6 border-r border-gray-300">{{ $request->resourceType }}</td>
+                    </tr>
+                    <tr class="border-b border-gray-300">
+                        <th class="py-3 px-6 text-left border-r border-gray-300">Tuklas Link</th>
+                        <td class="py-3 px-6 border-r border-gray-300">
+                            <a href="{{ $request->tuklasLink }}" target="_blank" class="text-blue-500 hover:underline">
+                                {{ $request->tuklasLink }}
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
 
+            <!-- Action Buttons -->
             <div class="mt-8 text-center space-x-4">
-                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
+                <form action="{{ route('requests.update', $request->requestID) }}" method="POST" class="inline-block">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="status" value="approved">
-                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
+                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600">
                         Approve
                     </button>
                 </form>
 
-                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
+                <form action="{{ route('requests.update', $request->requestID) }}" method="POST" class="inline-block">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" name="status" value="rejected">
-                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
+                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600">
                         Reject
                     </button>
                 </form>
 
-                <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
+                <form action="{{ route('requests.destroy', $request->requestID) }}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="px-4 py-2 text-white bg-gray-500 rounded-lg hover:bg-gray-600">
@@ -128,4 +136,3 @@
 
 </body>
 </html>
-
