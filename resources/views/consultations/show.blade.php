@@ -26,7 +26,7 @@
 
     <!-- Back Button -->
     <div class="flex justify-start mt-8 px-6">
-        <a href="{{ route('user.index') }}">
+        <a href="{{ route('consultations.index') }}">
             <button class="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 transition duration-300">
                 Back
             </button>
@@ -115,7 +115,7 @@
                 <form action="{{ route('consultations.update', ['consultation' => $consultation->id]) }}" method="POST" class="inline-block">
                     @csrf
                     @method('DELETE')
-                    <<button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700" onclick="return confirm('Are you sure you want to archive this consultation??')">
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700" onclick="return confirm('Are you sure you want to archive this consultation??')">
                         Archive
                     </button>
                 </form>
