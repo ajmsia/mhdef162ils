@@ -19,13 +19,13 @@ class RequestsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() // For librarian view of reservation form //
+    public function create() 
     {
         $requests = requests::all(); 
         return view('requests.create', compact('requests'));
     }
 
-    public function usercreate() // For user view of reservation form //
+    public function usercreate() 
     {
         $requests = requests::all(); 
         return view('requests.usercreate', compact('requests'));
@@ -75,19 +75,19 @@ class RequestsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(HttpRequest $request, requests $requestModel, $requestID)
+    public function edit(HttpRequest $httpRequest, $requestID)
     {
-        $request = requests::findOrFail($requestID);
-        return view('requests.edit', compact('request'));
+        $request = requests::findOrFail($requestID); // Fetch request based on ID
+        return view('requests.edit', compact('request')); // Pass the request to the view
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(HttpRequest $request, requests $requestModel)
+    public function update(HttpRequest $httpRequest, $requestID)
     {
         // Validate the input data
-        $validatedData = $request->validate([
+        $validatedData = $httpRequest->validate([
             'userFirstName' => 'required|string|max:255',
             'userLastName' => 'required|string|max:255',
             'userMiddleName' => 'nullable|string|max:255',
@@ -100,19 +100,22 @@ class RequestsController extends Controller
             'requestDate' => 'required|date',
         ]);
 
-        // Update the request with new data
-        $requestModel->update($validatedData);
+        // Find the request by ID and update it
+        $request = requests::findOrFail($requestID);
+        $request->update($validatedData);
 
         return redirect()->route('requests.index')->with('success', 'Request updated successfully!');
     }
 
-    public function updateStatus(HttpRequest $request, requests $requestModel)
+    public function updateStatus(HttpRequest $httpRequest, $requestID)
     {
-        if ($requestModel->has('status')) {
-            $requestModel->status = $request->input('status');
-            $requestModel->save();
+        $request = requests::findOrFail($requestID);  // Fetch request by ID
 
-            return redirect()->route('requests.index')->with('success', 'Request status updated to ' . $requestModel->status . '!');
+        if ($httpRequest->has('status')) {
+            $request->status = $httpRequest->input('status');
+            $request->save();
+
+            return redirect()->route('requests.index')->with('success', 'Request status updated to ' . $request->status . '!');
         }
 
         return redirect()->route('requests.index')->with('error', 'No status provided!');
@@ -121,9 +124,10 @@ class RequestsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(requests $requestModel)
+    public function destroy($requestID)
     {
-        $requestModel->delete();
+        $request = requests::findOrFail($requestID);  // Find the request by ID
+        $request->delete();  // Delete the request
 
         return redirect()->route('requests.index')->with('success', 'Request archived successfully!');
     }
