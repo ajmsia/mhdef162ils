@@ -21,16 +21,15 @@
                     </div>
                 </div>
 
-                <!-- Buttons Container (Add Reservation and View Rooms) -->
-                <!-- <div class="flex space-x-4 absolute top-4 right-4" 
-                    Add Reservation Button
-                    <a href="{{ route('reservations.create') }}">
+                <!-- Buttons Container (Add Request) -->
+                <div class="flex space-x-4 absolute top-4 right-4" >
+                    <!-- Add Request Button -->
+                    <a href="{{ route('requests.create') }}">
                         <button class="bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300 text-sm">
-                            Add Reservation
+                            Add Request
                         </button>
                     </a>
-
-                </div> --> <!-- updated: not relevant to request use case -->
+                </div>
             </div>
         </div>
     </nav>

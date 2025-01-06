@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('reservations', function (Blueprint $table) {
-            $table->dropUnique(['upmail']);
-        });
+        if (Schema::hasTable('reservations')) {
+            Schema::table('reservations', function (Blueprint $table) {
+                $table->dropUnique('reservations_upmail_unique');
+            });
+        }
     }
 
     /**
@@ -21,8 +23,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('reservations', function (Blueprint $table) {
-            $table->unique('upmail');
-        });
+       if (Schema::hasTable('reservations')) {
+         Schema::table('reservations', function (Blueprint $table) {
+           $table->unique('upmail');
+            });
+        }
     }
 };

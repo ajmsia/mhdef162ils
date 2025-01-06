@@ -21,6 +21,17 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- Buttons Container (Add Consultation) -->
+                <div class="flex space-x-4 absolute top-4 right-4" >
+                    <!-- Add Request Button -->
+                    <a href="{{ route('consultations.usercreate') }}">
+                        <button class="bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300 text-sm">
+                            Add Request
+                        </button>
+                    </a>
+                </div>
+
             </div>
         </div>
     </nav>
@@ -44,6 +55,7 @@
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Full Name</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Nickname</th>
+                        <th class="py-3 px-6 text-left border-b border-r border-gray-300">Status</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Email</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Contact</th>
                         <th class="py-3 px-6 text-left border-b border-r border-gray-300">Reserve Date</th>
@@ -55,22 +67,60 @@
                 <tbody>
                     @forelse ($consultations as $consultation)
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
-                            <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->fullname }}</td>
+                            <td class="py-3 px-6 border-r border-gray-300">
+                                <a href="{{ route('consultations.show', $consultation->id) }}" class="text-black hover:text-blue-500">
+                                    {{ $consultation->fullname }}
+                                </a>    
+                            </td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->nickname }}</td>
+                            <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->status }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->mail }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->contact ?? 'N/A' }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->reserveDate }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->reserveTime }}</td>
                             <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->purpose }}</td>
                             <td class="py-3 px-6 text-center border-r border-gray-300">
-                            <a href="{{ route('consultations.edit', $consultation->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Edit</a>
+                            
+                            <div class="flex space-x-4">
+                                <a href="{{ route('consultations.edit', $consultation->id) }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                    Edit
+                                </a>
+
+                                <form action="{{ route('consultations.update', ['consultation' => $consultation->id]) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="status" value="completed">
+                                    <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
+                                         Approve
+                                    </button>
+                                </form>
+
+                                <form action="{{ route('consultations.update', ['consultation' => $consultation->id]) }}" method="POST" class="inline-block">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="denied">
+                                    <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-blue-600">
+                                         Reject
+                                    </button>
+                                </form>
+                                
+                                
+
                                 <form action="{{ route('consultations.destroy', $consultation->id) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700" onclick="return confirm('Are you sure you want to delete this data??')">Delete</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700" onclick="return confirm('Are you sure you want to archive this consultation??')">
+                                        Archive
+                                    </button>
                                 </form>
+                            
+                            </div>
+                        
                             </td>
                         </tr>
+                    
+                    
+                    
                     @empty
                         <tr>
                             <td colspan="7" class="text-center py-4">No consultations scheduled.</td>

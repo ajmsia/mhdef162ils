@@ -44,7 +44,7 @@ class ConsultationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Consultations $consultation, $id)
+    public function show($id)
     {
         $consultation = Consultations::findOrFail($id);
         return view('consultations.show', compact('consultation'));
