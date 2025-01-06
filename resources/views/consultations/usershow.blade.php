@@ -45,15 +45,7 @@
         @endif
 
         <!-- Request Details Table with Border -->
-        <div class="bg-gray-200 p-8 rounded-md shadow-lg border border-gray-300">
-            <!-- Edit Button -->
-            <div class="flex justify-start mt-1 mb-6 px-2">
-                <a href="{{ route('consultations.edit', $consultation->id) }}">
-                    <button class="bg-blue-500 text-white py-3 px-5 rounded-lg hover:bg-blue-600 transition duration-300">
-                        Edit
-                    </button>
-                </a>
-            </div>
+        <div class="bg-gray-200 p-8 rounded-md shadow-lg border border-gray-300">`
 
             <table class="min-w-full bg-white border-collapse">
                 <tbody>
@@ -65,6 +57,7 @@
                         <th class="py-3 px-6 text-left border-r border-gray-300">Nickname</th>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->nickname}}</td>
                     </tr>
+
                     <tr class="border-b border-gray-300">
                         <th class="py-3 px-6 text-left border-r border-gray-300">Email Address</th>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->email }}</td>
@@ -85,10 +78,6 @@
                     <tr class="border-b border-gray-300">
                         <th class="py-3 px-6 text-left border-r border-gray-300">Purpose</th>
                         <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->purpose }}</td>
-                    </tr>
-                    <tr class="border-b border-gray-300">
-                        <th class="py-3 px-6 text-left border-r border-gray-300">Status</th>
-                        <td class="py-3 px-6 border-r border-gray-300">{{ $consultation->status }}</td>
                     </tr>
                 </tbody>
             </table>
