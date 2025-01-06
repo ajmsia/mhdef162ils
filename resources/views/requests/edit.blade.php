@@ -79,7 +79,7 @@
                 <div class="flex flex-col md:flex-row gap-4 flex items-center justify-center">
                     <!-- Request Date -->
                     <div class="mb-4">
-                        <label for="reserveDate" class="block text-sm font-medium text-gray-700 mb-3">Reservation Date</label>
+                        <label for="reserveDate" class="block text-sm font-medium text-gray-700 mb-3">Request Date</label>
                         <input type="date" id="requestDate" name="requestDate" value="{{ $request->requestDate }}" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     </div>
                 </div>
