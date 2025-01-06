@@ -87,7 +87,7 @@
 
                                 <form action="{{ route('requests.update', ['request' => $request->requestID]) }}" method="POST" class="inline-block">
                                     @csrf
-                                    @method('PATCH')
+                                    @method('PUT')
                                     <input type="hidden" name="status" value="approved">
                                     <button type="submit" class="px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-blue-600">
                                         Approve

@@ -47,6 +47,9 @@
 
             <form method="POST" action="{{ route('requests.store') }}" enctype="multipart/form-data">
                 @csrf
+                
+                <!-- Hidden User Type -->
+                <input type="hidden" name="userType" value="Librarian">
 
                 <!-- Resource Details -->
                 <div class="flex flex-col md:flex-row gap-4">
