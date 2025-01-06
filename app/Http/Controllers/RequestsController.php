@@ -82,7 +82,6 @@ class RequestsController extends Controller
      */
     public function edit(Request $request, Requests $requests, $requestID)
     {
-        $requestID = $requests->route('requestID');
         $request = Requests::findOrFail($requestID);
     
          return view('requests.edit', compact('request'));
