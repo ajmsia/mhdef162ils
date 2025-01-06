@@ -152,7 +152,6 @@
                         <option value="15:00">3:00 PM</option>
                         <option value="16:00">4:00 PM</option>
                         <option value="17:00">5:00 PM</option>
-                        <option value="18:00">6:00 PM</option>
                     </select>
                 </div>
 
