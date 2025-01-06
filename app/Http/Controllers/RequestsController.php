@@ -104,7 +104,7 @@ class RequestsController extends Controller
         $request = requests::findOrFail($requestID);
         $request->update($validatedData);
 
-        return redirect()->route('requests.index')->with('success', 'Request updated successfully!');
+        return redirect()->route('user.requests.usershow', $request->requestID)->with('success', 'Request successfully submitted!');
     }
 
     public function updateStatus(HttpRequest $httpRequest, $requestID)
