@@ -159,7 +159,7 @@
                 <!-- Action Buttons -->
                 <div class="flex justify-center mt-6 gap-4">
                     <button type="button" class="bg-red-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-red-600 transition duration-300">
-                        <a href="{{ route ('user.index') }}">Cancel</a>
+                        <a href="{{ route ('requests.index') }}">Cancel</a>
                     </button>
                     <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-lg text-lg hover:bg-green-600 transition duration-300">Add Request</button>
                 </div>
