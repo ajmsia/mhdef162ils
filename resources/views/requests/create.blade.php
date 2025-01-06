@@ -137,7 +137,9 @@
                             <option value="Book">Book</option>
                             <option value="Electronic Resource">Electronic Resource</option>
                             <option value="Thesis">Thesis</option>
+                            <option value="Dissertation">Dissertation</option>
                             <option value="Analytics">Analytics</option>
+                            <option value="Journal">Journal</option>
                             <option value="Article">Article</option>
                             <option value="Continuing Resource">Continuing Resource</option>
                             <option value="Visual Material">Visual Material</option>
