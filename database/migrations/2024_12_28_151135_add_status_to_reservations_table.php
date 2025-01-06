@@ -11,18 +11,21 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::table('reservations', function (Blueprint $table) {
-        if (!Schema::hasColumn('reservations', 'status')) {
-            $table->string('status')->default('Pending');
-        }
-    });
+    if (!Schema::hasColumn('reservations', 'status')) {
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->string('status')->default('Pending')->notNull();
+        });
+    }
 }
 
 public function down(): void
 {
-    Schema::table('reservations', function (Blueprint $table) {
-        $table->dropColumn('status');
-    });
+    if (Schema::hasColumn('reservations', 'status')) {
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
+    }
+
 }
 
 };
